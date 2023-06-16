@@ -9,10 +9,3 @@ array_relationships:
         table:
           name: posts
           schema: public
-  - name: stars
-    using:
-      foreign_key_constraint_on:
-        column: user_id
-        table:
-          name: stars
-          schema: public
