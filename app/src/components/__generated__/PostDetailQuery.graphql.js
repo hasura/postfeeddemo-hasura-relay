@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<87177acc63a4613081ed39275a8b4ab9>>
+ * @generated SignedSource<<2f5e34b3e8aa52afe7d1950fe6c18462>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -48,13 +48,6 @@ v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "starred",
-  "storageKey": null
-},
-v6 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "created_at",
   "storageKey": null
 };
@@ -80,7 +73,11 @@ return {
               (v3/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
-              (v6/*: any*/)
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "StarFragment"
+              }
             ],
             "type": "posts",
             "abstractKey": null
@@ -120,7 +117,13 @@ return {
               (v3/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
-              (v6/*: any*/)
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "starred",
+                "storageKey": null
+              }
             ],
             "type": "posts",
             "abstractKey": null
@@ -131,16 +134,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "2b192bc3e61f3d48ff8376466298c430",
+    "cacheID": "df2e11b616af97def1e0ed080d7292f4",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      starred\n      created_at\n    }\n    id\n  }\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  starred\n}\n"
   }
 };
 })();
 
-node.hash = "c864cb7c30f63c29cbe0e8e83b362e0a";
+node.hash = "1f9ea4a615a9e974f0fa5691ad9088e6";
 
 module.exports = node;

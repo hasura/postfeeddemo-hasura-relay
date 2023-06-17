@@ -4,14 +4,14 @@ import PostItem from "./PostItem";
 
 const ListFragment = graphql`
   fragment PostListFragment on users {
-    posts(limit: 3) {
+    posts(limit: 30) {
       id
       ...PostItemFragment
     }
   }
 `;
 
-function PostList({ user, setSelectedPostId }) {
+function PostList({ user, selectedPostId, setSelectedPostId }) {
   const data = useFragment(ListFragment, user);
 
   return (
@@ -21,6 +21,7 @@ function PostList({ user, setSelectedPostId }) {
           post={post}
           key={post.id}
           setSelectedPostId={setSelectedPostId}
+          isSelected={post.id === selectedPostId}
         />
       ))}
     </div>

@@ -11,7 +11,7 @@
 
 .PostItem {
   border-bottom: 1px solid black;
-  padding: 1px 10px;
+  padding: 10px 10px;
   cursor: pointer;
 }
 
@@ -19,6 +19,25 @@
   background-color: #eee;
 }
 
+.PostItem.selected {
+  background-color: #ccc;
+}
+
+.PostItem h4 {
+  margin: 4px 0;
+}
+
 .PostDetail {
   padding: 0px 20px;
+}
+
+.Star {
+  display: inline-block;
+  padding: 4px 6px;
+}
+
+.Star:hover {
+  background-color: rgb(250, 229, 3);
+  color: white;
+  cursor: pointer;
 }

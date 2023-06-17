@@ -24,11 +24,14 @@ function App() {
   const [selectedPostId, setSelectedPostId] = useState(null);
 
   const data = useLazyLoadQuery(AppQuery, { baseId: BASE_USER_ID });
-  // console.log(data);
 
   return (
     <div className="App">
-      <PostList user={data.node} setSelectedPostId={setSelectedPostId} />
+      <PostList
+        user={data.node}
+        selectedPostId={selectedPostId}
+        setSelectedPostId={setSelectedPostId}
+      />
       <Suspense fallback={<div>Loading... </div>}>
         {(selectedPostId && <PostDetail postId={selectedPostId} />) ||
           "No post selected"}

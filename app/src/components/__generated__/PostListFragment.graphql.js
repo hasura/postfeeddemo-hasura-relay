@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<777812af527a1bc41622347a2c99e429>>
+ * @generated SignedSource<<0d1f280dab54c2eb264b2eed6506fd03>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,7 @@ var node = {
         {
           "kind": "Literal",
           "name": "limit",
-          "value": 3
+          "value": 30
         }
       ],
       "concreteType": "posts",
@@ -41,13 +41,13 @@ var node = {
           "name": "PostItemFragment"
         }
       ],
-      "storageKey": "posts(limit:3)"
+      "storageKey": "posts(limit:30)"
     }
   ],
   "type": "users",
   "abstractKey": null
 };
 
-node.hash = "cbb6f9202d7bb921967b599d770a8560";
+node.hash = "a015b8e302ba06aa0f9f17aa8b7839d5";
 
 module.exports = node;

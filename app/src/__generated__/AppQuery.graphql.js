@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d0fb00939b998bd520f6db4c06442d4a>>
+ * @generated SignedSource<<d89e86c4c33dc904ad5748a445ba5425>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -105,7 +105,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "limit",
-                    "value": 3
+                    "value": 30
                   }
                 ],
                 "concreteType": "posts",
@@ -129,7 +129,7 @@ return {
                     "storageKey": null
                   }
                 ],
-                "storageKey": "posts(limit:3)"
+                "storageKey": "posts(limit:30)"
               }
             ],
             "type": "users",
@@ -141,12 +141,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "42812bcb27c817f0455f401418b9895f",
+    "cacheID": "f2f49873ac95c8b91707d76dc42e3248",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  starred\n}\n\nfragment PostListFragment on users {\n  posts(limit: 3) {\n    id\n    ...PostItemFragment\n  }\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n}\n\nfragment PostListFragment on users {\n  posts(limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  starred\n}\n"
   }
 };
 })();
