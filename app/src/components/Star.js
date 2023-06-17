@@ -31,6 +31,15 @@ function Star({ post }) {
         postId,
         starred: !data.starred,
       },
+      optimisticUpdater: (store) => {
+        const fragment = graphql`
+          fragment Star_updatable on posts @updatable {
+            starred
+          }
+        `;
+        const { updatableData } = store.readUpdatableFragment(fragment, post);
+        updatableData.starred = !updatableData.starred;
+      },
     });
   }
 
