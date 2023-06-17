@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "babel-plugin-relay": "^15.0.0",
+    "graphqurl": "^1.0.1",
     "relay-compiler": "^15.0.0"
   }
 }

@@ -1,0 +1,1 @@
+npm exec -- gq http://hasura:8080/v1beta1/relay -H "X-Hasura-Admin-Secret: aFyrZOSGqAj2Eob5lNWz" --introspect > src/schema.graphql
