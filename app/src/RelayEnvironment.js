@@ -1,6 +1,6 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
-const HTTP_ENDPOINT = "http://hasura:8080/v1beta1/relay";
+const HTTP_ENDPOINT = "http://localhost:8080/v1beta1/relay";
 
 const fetchFn = async (request, variables) => {
   const resp = await fetch(HTTP_ENDPOINT, {
