@@ -1,7 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay";
+import { useState } from "react";
+import PostList from "./components/PostList";
+import PostDetail from "./components/PostDetail";
+import { Suspense } from "react";
 
 const BASE_USER_ID = "WzEsICJwdWJsaWMiLCAidXNlcnMiLCAxXQ==";
 
@@ -11,36 +14,25 @@ const AppQuery = graphql`
       ... on users {
         id
         name
-        posts {
-          id
-          title
-          starred
-        }
+        ...PostListFragment
       }
     }
   }
 `;
 
 function App() {
+  const [selectedPostId, setSelectedPostId] = useState(null);
+
   const data = useLazyLoadQuery(AppQuery, { baseId: BASE_USER_ID });
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PostList user={data.node} setSelectedPostId={setSelectedPostId} />
+      <Suspense fallback={<div>Loading... </div>}>
+        {(selectedPostId && <PostDetail postId={selectedPostId} />) ||
+          "No post selected"}
+      </Suspense>
     </div>
   );
 }
