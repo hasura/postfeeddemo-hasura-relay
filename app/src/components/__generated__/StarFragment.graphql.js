@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ac301b58a52017b9995a1068d41a320a>>
+ * @generated SignedSource<<6fa8707f9e6805363aa22c21c4297704>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,13 @@ var node = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
       "name": "starred",
       "storageKey": null
     }
@@ -26,6 +33,6 @@ var node = {
   "abstractKey": null
 };
 
-node.hash = "13624fdccb9a59adf7bc2d2ff1fc4dd9";
+node.hash = "6fa07198c1066dbca6e6be2175d0c7e1";
 
 module.exports = node;

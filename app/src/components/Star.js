@@ -1,5 +1,6 @@
 import graphql from "babel-plugin-relay/macro";
 import { useFragment, useMutation } from "react-relay";
+import { Base64 } from "js-base64";
 
 const StarFragment = graphql`
   fragment StarFragment on posts {
@@ -9,7 +10,7 @@ const StarFragment = graphql`
 `;
 
 const StarMutation = graphql`
-  mutation StarMutation($postId: ID!, $starred: Boolean!) {
+  mutation StarMutation($postId: Int!, $starred: Boolean!) {
     update_posts_by_pk(
       pk_columns: { id: $postId }
       _set: { starred: $starred }
@@ -24,9 +25,10 @@ function Star({ post }) {
 
   const [commitMutation, isMutationInFlight] = useMutation(StarMutation);
   function onStarClicked() {
+    const postId = JSON.parse(Base64.decode(data.id))[3];
     commitMutation({
       variables: {
-        postId: data.id,
+        postId,
         starred: !data.starred,
       },
     });

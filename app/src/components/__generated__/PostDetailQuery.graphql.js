@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2f5e34b3e8aa52afe7d1950fe6c18462>>
+ * @generated SignedSource<<3d7ad0ae09afb0e0d9e5f317a021dfa7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -134,12 +134,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "df2e11b616af97def1e0ed080d7292f4",
+    "cacheID": "4ca03cee951805c2a31e8428cc47a78c",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  starred\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();
