@@ -1,3 +1,5 @@
+- "!include public_comments.yaml"
+- "!include public_comments_likes.yaml"
 - "!include public_likes.yaml"
 - "!include public_posts.yaml"
 - "!include public_users.yaml"

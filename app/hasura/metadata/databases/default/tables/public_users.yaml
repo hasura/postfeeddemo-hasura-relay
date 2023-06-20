@@ -2,6 +2,13 @@ table:
   name: users
   schema: public
 array_relationships:
+  - name: comments_likes
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: comments_likes
+          schema: public
   - name: likes
     using:
       foreign_key_constraint_on:
