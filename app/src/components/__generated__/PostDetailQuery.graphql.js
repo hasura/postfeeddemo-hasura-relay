@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d7ad0ae09afb0e0d9e5f317a021dfa7>>
+ * @generated SignedSource<<eaa7c581877c731a630c3de746b29535>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -77,6 +77,11 @@ return {
                 "args": null,
                 "kind": "FragmentSpread",
                 "name": "StarFragment"
+              },
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "LikesFragment"
               }
             ],
             "type": "posts",
@@ -123,6 +128,37 @@ return {
                 "kind": "ScalarField",
                 "name": "starred",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "likes",
+                "kind": "LinkedField",
+                "name": "likes",
+                "plural": true,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "users",
+                    "kind": "LinkedField",
+                    "name": "user",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "name",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  (v2/*: any*/)
+                ],
+                "storageKey": null
               }
             ],
             "type": "posts",
@@ -134,16 +170,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4ca03cee951805c2a31e8428cc47a78c",
+    "cacheID": "38978479c00231c5c746588a2fcbadd6",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();
 
-node.hash = "1f9ea4a615a9e974f0fa5691ad9088e6";
+node.hash = "140c47df58cbca10c8568294a2fe7b4e";
 
 module.exports = node;
