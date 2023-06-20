@@ -9,12 +9,12 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
       HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
     ports:
-    - "3000:3000"
-    - "9695:9695"
+    - "3001:3000"
+    # - "9695:9695"
   database:
     image: postgres:15
-    ports:
-    - "5432:5432"
+    # ports:
+    # - "5432:5432"
     volumes:
       - database-data:/var/lib/postgresql/data
     environment:

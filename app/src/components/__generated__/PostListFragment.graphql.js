@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0d1f280dab54c2eb264b2eed6506fd03>>
+ * @generated SignedSource<<5191d55d9bb3672f0322ac7210b85853>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,6 +21,13 @@ var node = {
           "kind": "Literal",
           "name": "limit",
           "value": 30
+        },
+        {
+          "kind": "Literal",
+          "name": "order_by",
+          "value": {
+            "created_at": "desc"
+          }
         }
       ],
       "concreteType": "posts",
@@ -41,13 +48,13 @@ var node = {
           "name": "PostItemFragment"
         }
       ],
-      "storageKey": "posts(limit:30)"
+      "storageKey": "posts(limit:30,order_by:{\"created_at\":\"desc\"})"
     }
   ],
   "type": "users",
   "abstractKey": null
 };
 
-node.hash = "a015b8e302ba06aa0f9f17aa8b7839d5";
+node.hash = "bf9585dcafe401539b05e549f281b291";
 
 module.exports = node;

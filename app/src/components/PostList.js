@@ -4,7 +4,7 @@ import PostItem from "./PostItem";
 
 const ListFragment = graphql`
   fragment PostListFragment on users {
-    posts(limit: 30) {
+    posts(order_by: { created_at: desc }, limit: 30) {
       id
       ...PostItemFragment
     }

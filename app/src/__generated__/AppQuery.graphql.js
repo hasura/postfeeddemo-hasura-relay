@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6daadd8cad6872a32bf8c5a2c8599401>>
+ * @generated SignedSource<<ec546575fa2c3fcb44b8e4fd3db82aa9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -106,6 +106,13 @@ return {
                     "kind": "Literal",
                     "name": "limit",
                     "value": 30
+                  },
+                  {
+                    "kind": "Literal",
+                    "name": "order_by",
+                    "value": {
+                      "created_at": "desc"
+                    }
                   }
                 ],
                 "concreteType": "posts",
@@ -129,7 +136,7 @@ return {
                     "storageKey": null
                   }
                 ],
-                "storageKey": "posts(limit:30)"
+                "storageKey": "posts(limit:30,order_by:{\"created_at\":\"desc\"})"
               }
             ],
             "type": "users",
@@ -141,12 +148,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d85e35fdb563d3346f8c7c5738dffa6a",
+    "cacheID": "a0011c46696cc7a356fc0d4cfb0b475e",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n}\n\nfragment PostListFragment on users {\n  posts(limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

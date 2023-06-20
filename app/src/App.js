@@ -27,6 +27,8 @@ function App() {
 
   return (
     <div className="App">
+      <h2 className="Header">{data.node.name}</h2>
+      <div />
       <PostList
         user={data.node}
         selectedPostId={selectedPostId}

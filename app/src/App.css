@@ -1,8 +1,12 @@
 .App {
   display: grid;
-  grid-template: 1fr / 1fr 2fr;
+  grid-template: auto 1fr / 1fr 2fr;
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
 }
+
+/* .Header {
+  border-bottom: 5px solid black;
+} */
 
 .PostList {
   border-right: 5px solid black;
