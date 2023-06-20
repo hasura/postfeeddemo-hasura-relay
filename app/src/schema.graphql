@@ -109,8 +109,413 @@ input String_comparison_exp {
   _similar: String
 }
 
+"""
+columns and relationships of "likes"
+"""
+type likes implements Node {
+  created_at: timestamptz!
+  id: ID!
+
+  """An object relationship"""
+  post: posts!
+  post_id: Int!
+
+  """An object relationship"""
+  user: users!
+  user_id: Int!
+}
+
+"""
+A Relay connection object on "likes"
+"""
+type likesConnection {
+  edges: [likesEdge!]!
+  pageInfo: PageInfo!
+}
+
+type likesEdge {
+  cursor: String!
+  node: likes!
+}
+
+"""
+aggregated selection of "likes"
+"""
+type likes_aggregate {
+  aggregate: likes_aggregate_fields
+  nodes: [likes!]!
+}
+
+input likes_aggregate_bool_exp {
+  count: likes_aggregate_bool_exp_count
+}
+
+input likes_aggregate_bool_exp_count {
+  arguments: [likes_select_column!]
+  distinct: Boolean
+  filter: likes_bool_exp
+  predicate: Int_comparison_exp!
+}
+
+"""
+aggregate fields of "likes"
+"""
+type likes_aggregate_fields {
+  avg: likes_avg_fields
+  count(columns: [likes_select_column!], distinct: Boolean): Int!
+  max: likes_max_fields
+  min: likes_min_fields
+  stddev: likes_stddev_fields
+  stddev_pop: likes_stddev_pop_fields
+  stddev_samp: likes_stddev_samp_fields
+  sum: likes_sum_fields
+  var_pop: likes_var_pop_fields
+  var_samp: likes_var_samp_fields
+  variance: likes_variance_fields
+}
+
+"""
+order by aggregate values of table "likes"
+"""
+input likes_aggregate_order_by {
+  avg: likes_avg_order_by
+  count: order_by
+  max: likes_max_order_by
+  min: likes_min_order_by
+  stddev: likes_stddev_order_by
+  stddev_pop: likes_stddev_pop_order_by
+  stddev_samp: likes_stddev_samp_order_by
+  sum: likes_sum_order_by
+  var_pop: likes_var_pop_order_by
+  var_samp: likes_var_samp_order_by
+  variance: likes_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "likes"
+"""
+input likes_arr_rel_insert_input {
+  data: [likes_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: likes_on_conflict
+}
+
+"""aggregate avg on columns"""
+type likes_avg_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by avg() on columns of table "likes"
+"""
+input likes_avg_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "likes". All fields are combined with a logical 'AND'.
+"""
+input likes_bool_exp {
+  _and: [likes_bool_exp!]
+  _not: likes_bool_exp
+  _or: [likes_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  post: posts_bool_exp
+  post_id: Int_comparison_exp
+  user: users_bool_exp
+  user_id: Int_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "likes"
+"""
+enum likes_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  likes_pkey
+}
+
+"""
+input type for incrementing numeric columns in table "likes"
+"""
+input likes_inc_input {
+  id: Int
+  post_id: Int
+  user_id: Int
+}
+
+"""
+input type for inserting data into table "likes"
+"""
+input likes_insert_input {
+  created_at: timestamptz
+  id: Int
+  post: posts_obj_rel_insert_input
+  post_id: Int
+  user: users_obj_rel_insert_input
+  user_id: Int
+}
+
+"""aggregate max on columns"""
+type likes_max_fields {
+  created_at: timestamptz
+  id: Int
+  post_id: Int
+  user_id: Int
+}
+
+"""
+order by max() on columns of table "likes"
+"""
+input likes_max_order_by {
+  created_at: order_by
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate min on columns"""
+type likes_min_fields {
+  created_at: timestamptz
+  id: Int
+  post_id: Int
+  user_id: Int
+}
+
+"""
+order by min() on columns of table "likes"
+"""
+input likes_min_order_by {
+  created_at: order_by
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""
+response of any mutation on the table "likes"
+"""
+type likes_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [likes!]!
+}
+
+"""
+on_conflict condition type for table "likes"
+"""
+input likes_on_conflict {
+  constraint: likes_constraint!
+  update_columns: [likes_update_column!]! = []
+  where: likes_bool_exp
+}
+
+"""Ordering options when selecting data from "likes"."""
+input likes_order_by {
+  created_at: order_by
+  id: order_by
+  post: posts_order_by
+  post_id: order_by
+  user: users_order_by
+  user_id: order_by
+}
+
+"""primary key columns input for table: likes"""
+input likes_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "likes"
+"""
+enum likes_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  post_id
+
+  """column name"""
+  user_id
+}
+
+"""
+input type for updating data in table "likes"
+"""
+input likes_set_input {
+  created_at: timestamptz
+  id: Int
+  post_id: Int
+  user_id: Int
+}
+
+"""aggregate stddev on columns"""
+type likes_stddev_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by stddev() on columns of table "likes"
+"""
+input likes_stddev_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type likes_stddev_pop_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "likes"
+"""
+input likes_stddev_pop_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type likes_stddev_samp_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "likes"
+"""
+input likes_stddev_samp_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate sum on columns"""
+type likes_sum_fields {
+  id: Int
+  post_id: Int
+  user_id: Int
+}
+
+"""
+order by sum() on columns of table "likes"
+"""
+input likes_sum_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""
+update columns of table "likes"
+"""
+enum likes_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  post_id
+
+  """column name"""
+  user_id
+}
+
+input likes_updates {
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: likes_inc_input
+
+  """sets the columns of the filtered rows to the given values"""
+  _set: likes_set_input
+
+  """filter the rows which have to be updated"""
+  where: likes_bool_exp!
+}
+
+"""aggregate var_pop on columns"""
+type likes_var_pop_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by var_pop() on columns of table "likes"
+"""
+input likes_var_pop_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type likes_var_samp_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by var_samp() on columns of table "likes"
+"""
+input likes_var_samp_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
+"""aggregate variance on columns"""
+type likes_variance_fields {
+  id: Float
+  post_id: Float
+  user_id: Float
+}
+
+"""
+order by variance() on columns of table "likes"
+"""
+input likes_variance_order_by {
+  id: order_by
+  post_id: order_by
+  user_id: order_by
+}
+
 """mutation root"""
 type mutation_root {
+  """
+  delete data from the table: "likes"
+  """
+  delete_likes(
+    """filter the rows which have to be deleted"""
+    where: likes_bool_exp!
+  ): likes_mutation_response
+
+  """
+  delete single row from the table: "likes"
+  """
+  delete_likes_by_pk(id: Int!): likes
+
   """
   delete data from the table: "posts"
   """
@@ -136,6 +541,28 @@ type mutation_root {
   delete single row from the table: "users"
   """
   delete_users_by_pk(id: Int!): users
+
+  """
+  insert data into the table: "likes"
+  """
+  insert_likes(
+    """the rows to be inserted"""
+    objects: [likes_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: likes_on_conflict
+  ): likes_mutation_response
+
+  """
+  insert a single row into the table: "likes"
+  """
+  insert_likes_one(
+    """the row to be inserted"""
+    object: likes_insert_input!
+
+    """upsert condition"""
+    on_conflict: likes_on_conflict
+  ): likes
 
   """
   insert data into the table: "posts"
@@ -180,6 +607,40 @@ type mutation_root {
     """upsert condition"""
     on_conflict: users_on_conflict
   ): users
+
+  """
+  update data of the table: "likes"
+  """
+  update_likes(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: likes_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: likes_set_input
+
+    """filter the rows which have to be updated"""
+    where: likes_bool_exp!
+  ): likes_mutation_response
+
+  """
+  update single row of the table: "likes"
+  """
+  update_likes_by_pk(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: likes_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: likes_set_input
+    pk_columns: likes_pk_columns_input!
+  ): likes
+
+  """
+  update multiples rows of table: "likes"
+  """
+  update_likes_many(
+    """updates to execute, in order"""
+    updates: [likes_updates!]!
+  ): [likes_mutation_response]
 
   """
   update data of the table: "posts"
@@ -278,6 +739,59 @@ type posts implements Node {
   body: String
   created_at: timestamptz!
   id: ID!
+
+  """An array relationship"""
+  likes(
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): [likes!]!
+
+  """An aggregate relationship"""
+  likes_aggregate(
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likes_aggregate!
+
+  """An array relationship connection"""
+  likes_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likesConnection!
   starred: Boolean!
   title: String!
 
@@ -402,6 +916,8 @@ input posts_bool_exp {
   body: String_comparison_exp
   created_at: timestamptz_comparison_exp
   id: Int_comparison_exp
+  likes: likes_bool_exp
+  likes_aggregate: likes_aggregate_bool_exp
   starred: Boolean_comparison_exp
   title: String_comparison_exp
   user: users_bool_exp
@@ -433,6 +949,7 @@ input posts_insert_input {
   body: String
   created_at: timestamptz
   id: Int
+  likes: likes_arr_rel_insert_input
   starred: Boolean
   title: String
   user: users_obj_rel_insert_input
@@ -491,6 +1008,16 @@ type posts_mutation_response {
 }
 
 """
+input type for inserting object relation for remote table "posts"
+"""
+input posts_obj_rel_insert_input {
+  data: posts_insert_input!
+
+  """upsert condition"""
+  on_conflict: posts_on_conflict
+}
+
+"""
 on_conflict condition type for table "posts"
 """
 input posts_on_conflict {
@@ -504,6 +1031,7 @@ input posts_order_by {
   body: order_by
   created_at: order_by
   id: order_by
+  likes_aggregate: likes_aggregate_order_by
   starred: order_by
   title: order_by
   user: users_order_by
@@ -699,6 +1227,22 @@ input posts_variance_order_by {
 }
 
 type query_root {
+  """An array relationship connection"""
+  likes_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likesConnection!
   node(
     """A globally unique id"""
     id: ID!
@@ -742,6 +1286,22 @@ type query_root {
 }
 
 type subscription_root {
+  """An array relationship connection"""
+  likes_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likesConnection!
   node(
     """A globally unique id"""
     id: ID!
@@ -807,6 +1367,59 @@ columns and relationships of "users"
 type users implements Node {
   created_at: timestamptz!
   id: ID!
+
+  """An array relationship"""
+  likes(
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): [likes!]!
+
+  """An aggregate relationship"""
+  likes_aggregate(
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likes_aggregate!
+
+  """An array relationship connection"""
+  likes_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [likes_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [likes_order_by!]
+
+    """filter the rows returned"""
+    where: likes_bool_exp
+  ): likesConnection!
   name: String
 
   """An array relationship"""
@@ -885,6 +1498,8 @@ input users_bool_exp {
   _or: [users_bool_exp!]
   created_at: timestamptz_comparison_exp
   id: Int_comparison_exp
+  likes: likes_bool_exp
+  likes_aggregate: likes_aggregate_bool_exp
   name: String_comparison_exp
   posts: posts_bool_exp
   posts_aggregate: posts_aggregate_bool_exp
@@ -913,6 +1528,7 @@ input type for inserting data into table "users"
 input users_insert_input {
   created_at: timestamptz
   id: Int
+  likes: likes_arr_rel_insert_input
   name: String
   posts: posts_arr_rel_insert_input
 }
@@ -951,6 +1567,7 @@ input users_on_conflict {
 input users_order_by {
   created_at: order_by
   id: order_by
+  likes_aggregate: likes_aggregate_order_by
   name: order_by
   posts_aggregate: posts_aggregate_order_by
 }
