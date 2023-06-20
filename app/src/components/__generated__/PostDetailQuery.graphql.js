@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<eaa7c581877c731a630c3de746b29535>>
+ * @generated SignedSource<<fc05a42104cb5b94f123afe4530864ec>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -131,7 +131,20 @@ return {
               },
               {
                 "alias": null,
-                "args": null,
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "limit",
+                    "value": 4
+                  },
+                  {
+                    "kind": "Literal",
+                    "name": "order_by",
+                    "value": {
+                      "created_at": "desc"
+                    }
+                  }
+                ],
                 "concreteType": "likes",
                 "kind": "LinkedField",
                 "name": "likes",
@@ -158,7 +171,7 @@ return {
                   },
                   (v2/*: any*/)
                 ],
-                "storageKey": null
+                "storageKey": "likes(limit:4,order_by:{\"created_at\":\"desc\"})"
               }
             ],
             "type": "posts",
@@ -170,12 +183,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "38978479c00231c5c746588a2fcbadd6",
+    "cacheID": "55912a2c3873dbfde6dd7b6bf87ef489",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: {created_at: desc}, limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

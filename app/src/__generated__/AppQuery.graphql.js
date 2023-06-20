@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e6af21b67a9d54d272c12af1c239a648>>
+ * @generated SignedSource<<df204712f5218afd8baec661897b9248>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -36,6 +36,13 @@ v3 = {
   "kind": "ScalarField",
   "name": "name",
   "storageKey": null
+},
+v4 = {
+  "kind": "Literal",
+  "name": "order_by",
+  "value": {
+    "created_at": "desc"
+  }
 };
 return {
   "fragment": {
@@ -107,13 +114,7 @@ return {
                     "name": "limit",
                     "value": 30
                   },
-                  {
-                    "kind": "Literal",
-                    "name": "order_by",
-                    "value": {
-                      "created_at": "desc"
-                    }
-                  }
+                  (v4/*: any*/)
                 ],
                 "concreteType": "posts",
                 "kind": "LinkedField",
@@ -137,7 +138,14 @@ return {
                   },
                   {
                     "alias": null,
-                    "args": null,
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "limit",
+                        "value": 4
+                      },
+                      (v4/*: any*/)
+                    ],
                     "concreteType": "likes",
                     "kind": "LinkedField",
                     "name": "likes",
@@ -158,7 +166,7 @@ return {
                       },
                       (v2/*: any*/)
                     ],
-                    "storageKey": null
+                    "storageKey": "likes(limit:4,order_by:{\"created_at\":\"desc\"})"
                   }
                 ],
                 "storageKey": "posts(limit:30,order_by:{\"created_at\":\"desc\"})"
@@ -173,12 +181,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "959d5ea3d0528cc590997e9d78396e1f",
+    "cacheID": "ae8a647def34cec0ed4ef401ca84014e",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: {created_at: desc}, limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

@@ -4,7 +4,7 @@ import LikeUser from "./LikeUser";
 
 const LikesFragment = graphql`
   fragment LikesFragment on posts {
-    likes {
+    likes(order_by: { created_at: desc }, limit: 4) {
       user {
         id
         ...LikeUserFragment
