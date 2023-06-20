@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<733a5e81c3e016d9bf7534c475b6060d>>
+ * @generated SignedSource<<10e8fbe97e799ec3c91d223163b96fe5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,7 @@ var node = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "PostItemFragment",
+  "name": "LikeUserFragment",
   "selections": [
     {
       "alias": null,
@@ -25,24 +25,14 @@ var node = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "title",
+      "name": "name",
       "storageKey": null
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "StarFragment"
-    },
-    {
-      "args": null,
-      "kind": "FragmentSpread",
-      "name": "LikesFragment"
     }
   ],
-  "type": "posts",
+  "type": "users",
   "abstractKey": null
 };
 
-node.hash = "3b6476ca5393a65d57fbd499745f3c43";
+node.hash = "5cbbf2077095d00e69c1ce6a5dc029d4";
 
 module.exports = node;

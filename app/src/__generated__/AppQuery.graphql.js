@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ec546575fa2c3fcb44b8e4fd3db82aa9>>
+ * @generated SignedSource<<e6af21b67a9d54d272c12af1c239a648>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -134,6 +134,31 @@ return {
                     "kind": "ScalarField",
                     "name": "starred",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "likes",
+                    "kind": "LinkedField",
+                    "name": "likes",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "users",
+                        "kind": "LinkedField",
+                        "name": "user",
+                        "plural": false,
+                        "selections": [
+                          (v2/*: any*/),
+                          (v3/*: any*/)
+                        ],
+                        "storageKey": null
+                      },
+                      (v2/*: any*/)
+                    ],
+                    "storageKey": null
                   }
                 ],
                 "storageKey": "posts(limit:30,order_by:{\"created_at\":\"desc\"})"
@@ -148,12 +173,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a0011c46696cc7a356fc0d4cfb0b475e",
+    "cacheID": "959d5ea3d0528cc590997e9d78396e1f",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();
