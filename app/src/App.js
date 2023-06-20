@@ -27,7 +27,10 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="Header">{data.node.name}</h2>
+      <h2 className="Header">
+        {data.node.name}
+        <span className="AppType">&nbsp;&nbsp;HASURA</span>
+      </h2>
       <div />
       <PostList
         user={data.node}

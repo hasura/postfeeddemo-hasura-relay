@@ -4,9 +4,14 @@
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
 }
 
-/* .Header {
-  border-bottom: 5px solid black;
-} */
+.Header {
+  padding: 0 10px;
+}
+
+.AppType {
+  color: red;
+  font-size: 0.5em;
+}
 
 .PostList {
   border-right: 5px solid black;
