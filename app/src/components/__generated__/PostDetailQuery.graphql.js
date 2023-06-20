@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b4d6c23e70d74895ccab14c9f2685211>>
+ * @generated SignedSource<<24fd9d47719ad0d0ff385249763afec1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -52,27 +52,26 @@ v5 = {
   "storageKey": null
 },
 v6 = {
-  "kind": "Literal",
-  "name": "limit",
-  "value": 4
-},
-v7 = {
   "created_at": "desc"
 },
-v8 = [
-  (v6/*: any*/),
+v7 = [
+  {
+    "kind": "Literal",
+    "name": "limit",
+    "value": 4
+  },
   {
     "kind": "Literal",
     "name": "order_by",
     "value": [
-      (v7/*: any*/),
+      (v6/*: any*/),
       {
         "id": "asc"
       }
     ]
   }
 ],
-v9 = [
+v8 = [
   {
     "alias": null,
     "args": null,
@@ -179,22 +178,26 @@ return {
               },
               {
                 "alias": null,
-                "args": (v8/*: any*/),
+                "args": (v7/*: any*/),
                 "concreteType": "likes",
                 "kind": "LinkedField",
                 "name": "likes",
                 "plural": true,
-                "selections": (v9/*: any*/),
+                "selections": (v8/*: any*/),
                 "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
               },
               {
                 "alias": null,
                 "args": [
-                  (v6/*: any*/),
+                  {
+                    "kind": "Literal",
+                    "name": "limit",
+                    "value": 100
+                  },
                   {
                     "kind": "Literal",
                     "name": "order_by",
-                    "value": (v7/*: any*/)
+                    "value": (v6/*: any*/)
                   }
                 ],
                 "concreteType": "comments",
@@ -206,16 +209,16 @@ return {
                   (v4/*: any*/),
                   {
                     "alias": null,
-                    "args": (v8/*: any*/),
+                    "args": (v7/*: any*/),
                     "concreteType": "comments_likes",
                     "kind": "LinkedField",
                     "name": "comments_likes",
                     "plural": true,
-                    "selections": (v9/*: any*/),
+                    "selections": (v8/*: any*/),
                     "storageKey": "comments_likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
                   }
                 ],
-                "storageKey": "comments(limit:4,order_by:{\"created_at\":\"desc\"})"
+                "storageKey": "comments(limit:100,order_by:{\"created_at\":\"desc\"})"
               }
             ],
             "type": "posts",
@@ -227,12 +230,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "76a87a9c5399e03a653b4d2d38cbed3e",
+    "cacheID": "dd925e3c638517a6a9e6452e0b8a1000",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n      ...CommentsFragment\n    }\n    id\n  }\n}\n\nfragment CommentLikesFragment on comments {\n  comments_likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment CommentsFragment on posts {\n  comments(order_by: {created_at: desc}, limit: 4) {\n    id\n    body\n    ...CommentLikesFragment\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n      ...CommentsFragment\n    }\n    id\n  }\n}\n\nfragment CommentLikesFragment on comments {\n  comments_likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment CommentsFragment on posts {\n  comments(order_by: {created_at: desc}, limit: 100) {\n    id\n    body\n    ...CommentLikesFragment\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

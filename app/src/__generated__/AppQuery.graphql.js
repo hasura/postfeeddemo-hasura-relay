@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<01c2969b5c9471c110d05c20ecb0f523>>
+ * @generated SignedSource<<ec9f40e4d04b6fe45b3b84d27050b372>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -108,7 +108,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "limit",
-                    "value": 50
+                    "value": 100
                   },
                   {
                     "kind": "Literal",
@@ -178,7 +178,7 @@ return {
                     "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
                   }
                 ],
-                "storageKey": "posts(limit:50,order_by:{\"id\":\"asc\"})"
+                "storageKey": "posts(limit:100,order_by:{\"id\":\"asc\"})"
               }
             ],
             "type": "users",
@@ -190,12 +190,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9b03bfd548fce98ba1d14657c987a5da",
+    "cacheID": "ebd4d6dd6c3c2a35fcc1f2ae3b77764a",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {id: asc}, limit: 50) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {id: asc}, limit: 100) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

@@ -33,6 +33,7 @@
 
 .PostDetail {
   padding: 0px 20px;
+  overflow-y: scroll;
 }
 
 .Star {

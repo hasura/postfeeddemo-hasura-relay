@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<da7159636cd1cd653891d8aba6a6ab4b>>
+ * @generated SignedSource<<334b51a6bc36d6ce4e3baac138531be2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,7 @@ var node = {
         {
           "kind": "Literal",
           "name": "limit",
-          "value": 4
+          "value": 100
         },
         {
           "kind": "Literal",
@@ -55,13 +55,13 @@ var node = {
           "name": "CommentLikesFragment"
         }
       ],
-      "storageKey": "comments(limit:4,order_by:{\"created_at\":\"desc\"})"
+      "storageKey": "comments(limit:100,order_by:{\"created_at\":\"desc\"})"
     }
   ],
   "type": "posts",
   "abstractKey": null
 };
 
-node.hash = "65a4260e310c33be460ce82fd92b2931";
+node.hash = "7fa5e4418a81217a5960cac30c0e56db";
 
 module.exports = node;

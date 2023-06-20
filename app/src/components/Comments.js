@@ -4,7 +4,7 @@ import CommentLikes from "./CommentLikes";
 
 const CommentsFragment = graphql`
   fragment CommentsFragment on posts {
-    comments(order_by: { created_at: desc }, limit: 4) {
+    comments(order_by: { created_at: desc }, limit: 100) {
       id
       body
       ...CommentLikesFragment
