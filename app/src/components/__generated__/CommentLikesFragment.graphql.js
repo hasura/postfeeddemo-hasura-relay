@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<52a051a0730601ab112b033c98642f47>>
+ * @generated SignedSource<<fb3407b564201b0099daabcd1ed6b2f3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,7 @@ var node = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "LikesFragment",
+  "name": "CommentLikesFragment",
   "selections": [
     {
       "alias": null,
@@ -35,9 +35,9 @@ var node = {
           ]
         }
       ],
-      "concreteType": "likes",
+      "concreteType": "comments_likes",
       "kind": "LinkedField",
-      "name": "likes",
+      "name": "comments_likes",
       "plural": true,
       "selections": [
         {
@@ -64,13 +64,13 @@ var node = {
           "storageKey": null
         }
       ],
-      "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
+      "storageKey": "comments_likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
     }
   ],
-  "type": "posts",
+  "type": "comments",
   "abstractKey": null
 };
 
-node.hash = "ac29baf995dfb05009ed4eec8a434f68";
+node.hash = "9e62a8a84ab0d1e43e8872e130a752c6";
 
 module.exports = node;

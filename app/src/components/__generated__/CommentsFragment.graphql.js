@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8402a041ddcefc1ce255703b1f278551>>
+ * @generated SignedSource<<da7159636cd1cd653891d8aba6a6ab4b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,7 @@ var node = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "PostListFragment",
+  "name": "CommentsFragment",
   "selections": [
     {
       "alias": null,
@@ -20,19 +20,19 @@ var node = {
         {
           "kind": "Literal",
           "name": "limit",
-          "value": 50
+          "value": 4
         },
         {
           "kind": "Literal",
           "name": "order_by",
           "value": {
-            "id": "asc"
+            "created_at": "desc"
           }
         }
       ],
-      "concreteType": "posts",
+      "concreteType": "comments",
       "kind": "LinkedField",
-      "name": "posts",
+      "name": "comments",
       "plural": true,
       "selections": [
         {
@@ -43,18 +43,25 @@ var node = {
           "storageKey": null
         },
         {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "body",
+          "storageKey": null
+        },
+        {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "PostItemFragment"
+          "name": "CommentLikesFragment"
         }
       ],
-      "storageKey": "posts(limit:50,order_by:{\"id\":\"asc\"})"
+      "storageKey": "comments(limit:4,order_by:{\"created_at\":\"desc\"})"
     }
   ],
-  "type": "users",
+  "type": "posts",
   "abstractKey": null
 };
 
-node.hash = "6d3299b574df9f917dd9c6db9a6053c0";
+node.hash = "65a4260e310c33be460ce82fd92b2931";
 
 module.exports = node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<df204712f5218afd8baec661897b9248>>
+ * @generated SignedSource<<01c2969b5c9471c110d05c20ecb0f523>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -38,11 +38,7 @@ v3 = {
   "storageKey": null
 },
 v4 = {
-  "kind": "Literal",
-  "name": "order_by",
-  "value": {
-    "created_at": "desc"
-  }
+  "id": "asc"
 };
 return {
   "fragment": {
@@ -112,9 +108,13 @@ return {
                   {
                     "kind": "Literal",
                     "name": "limit",
-                    "value": 30
+                    "value": 50
                   },
-                  (v4/*: any*/)
+                  {
+                    "kind": "Literal",
+                    "name": "order_by",
+                    "value": (v4/*: any*/)
+                  }
                 ],
                 "concreteType": "posts",
                 "kind": "LinkedField",
@@ -144,7 +144,16 @@ return {
                         "name": "limit",
                         "value": 4
                       },
-                      (v4/*: any*/)
+                      {
+                        "kind": "Literal",
+                        "name": "order_by",
+                        "value": [
+                          {
+                            "created_at": "desc"
+                          },
+                          (v4/*: any*/)
+                        ]
+                      }
                     ],
                     "concreteType": "likes",
                     "kind": "LinkedField",
@@ -166,10 +175,10 @@ return {
                       },
                       (v2/*: any*/)
                     ],
-                    "storageKey": "likes(limit:4,order_by:{\"created_at\":\"desc\"})"
+                    "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
                   }
                 ],
-                "storageKey": "posts(limit:30,order_by:{\"created_at\":\"desc\"})"
+                "storageKey": "posts(limit:50,order_by:{\"id\":\"asc\"})"
               }
             ],
             "type": "users",
@@ -181,12 +190,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ae8a647def34cec0ed4ef401ca84014e",
+    "cacheID": "9b03bfd548fce98ba1d14657c987a5da",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: {created_at: desc}, limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {created_at: desc}, limit: 30) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts(order_by: {id: asc}, limit: 50) {\n    id\n    ...PostItemFragment\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();

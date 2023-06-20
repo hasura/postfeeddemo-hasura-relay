@@ -2,6 +2,7 @@ import graphql from "babel-plugin-relay/macro";
 import { useLazyLoadQuery } from "react-relay";
 import Star from "./Star";
 import Likes from "./Likes";
+import Comments from "./Comments";
 
 const PostDetailQuery = graphql`
   query PostDetailQuery($postId: ID!) {
@@ -13,6 +14,7 @@ const PostDetailQuery = graphql`
         created_at
         ...StarFragment
         ...LikesFragment
+        ...CommentsFragment
       }
     }
   }
@@ -31,8 +33,9 @@ function PostDetail({ postId }) {
       <Star post={p} />
       <p>{p.body}</p>
       <p>{p.created_at}</p>
-      <p>{p.id}</p>
+      {/* <p>{p.id}</p> */}
       <Likes post={p} />
+      <Comments post={p} />
     </div>
   );
 }

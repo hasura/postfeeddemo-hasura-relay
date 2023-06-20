@@ -40,6 +40,17 @@
   padding: 4px 6px;
 }
 
+.Likes {
+  display: inline-block;
+  padding: 4px 6px;
+}
+
+.LikeUser {
+  display: inline-block;
+  padding: 4px 6px;
+  border: 1px solid #eee;
+}
+
 .Star:hover {
   background-color: rgb(250, 229, 3);
   color: white;

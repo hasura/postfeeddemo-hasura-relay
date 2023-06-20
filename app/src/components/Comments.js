@@ -1,19 +1,13 @@
 import graphql from "babel-plugin-relay/macro";
 import { useFragment } from "react-relay";
+import CommentLikes from "./CommentLikes";
 
 const CommentsFragment = graphql`
   fragment CommentsFragment on posts {
-    comments(order_by: [{ created_at: desc }, { id: asc }], limit: 4) {
+    comments(order_by: { created_at: desc }, limit: 4) {
       id
       body
-      user {
-        id
-        name
-      }
-      comments_likes(order_by: { created_at: desc }, limit: 4) {
-        id
-        body
-      }
+      ...CommentLikesFragment
     }
   }
 `;
@@ -22,14 +16,11 @@ function Comments({ post }) {
   const data = useFragment(CommentsFragment, post);
   return (
     <div className="Comments">
+      <h4>Recent Comments</h4>
       {data.comments.map((comment) => (
         <div key={comment.id} className="Comment">
           <p>{comment.body}</p>
-          <div className="CommentLikes">
-            {comment.comments_likes.map((like) => (
-              <p key={like.id}>{like.body}</p>
-            ))}
-          </div>
+          <CommentLikes comment={comment} />
         </div>
       ))}
     </div>

@@ -12,7 +12,7 @@ function LikeUser({ user }) {
   const data = useFragment(LikeUserFragment, user);
   return (
     <div className="LikeUser">
-      <span>{data.name[0]}</span>
+      <span title={data.name}>{data.name[0]}</span>
     </div>
   );
 }
