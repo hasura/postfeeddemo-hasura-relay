@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<54a55a63ec43c251f88285dbe49a3e28>>
+ * @generated SignedSource<<c90f95d862ad11a31fd9db1926479e1e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,44 +11,52 @@
 var node = (function(){
 var v0 = [
   {
+    "defaultValue": 3,
+    "kind": "LocalArgument",
+    "name": "count"
+  },
+  {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "baseId"
+    "name": "cursor"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "id"
   }
 ],
 v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "baseId"
+    "variableName": "id"
   }
 ],
 v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "__typename",
   "storageKey": null
 },
 v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "id",
   "storageKey": null
 },
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-},
-v5 = [
+v4 = [
   {
-    "kind": "Literal",
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor"
+  },
+  {
+    "kind": "Variable",
     "name": "first",
-    "value": 3
+    "variableName": "count"
   }
 ];
 return {
@@ -56,7 +64,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppQuery",
+    "name": "PostListPaginationQuery",
     "selections": [
       {
         "alias": null,
@@ -67,18 +75,20 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "InlineFragment",
-            "selections": [
-              (v2/*: any*/),
-              (v3/*: any*/),
+            "args": [
               {
-                "args": null,
-                "kind": "FragmentSpread",
-                "name": "PostListFragment"
+                "kind": "Variable",
+                "name": "count",
+                "variableName": "count"
+              },
+              {
+                "kind": "Variable",
+                "name": "cursor",
+                "variableName": "cursor"
               }
             ],
-            "type": "users",
-            "abstractKey": null
+            "kind": "FragmentSpread",
+            "name": "PostListFragment"
           }
         ],
         "storageKey": null
@@ -91,7 +101,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "PostListPaginationQuery",
     "selections": [
       {
         "alias": null,
@@ -101,15 +111,14 @@ return {
         "name": "node",
         "plural": false,
         "selections": [
-          (v4/*: any*/),
           (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "InlineFragment",
             "selections": [
-              (v3/*: any*/),
               {
                 "alias": null,
-                "args": (v5/*: any*/),
+                "args": (v4/*: any*/),
                 "concreteType": "postsConnection",
                 "kind": "LinkedField",
                 "name": "posts_connection",
@@ -131,7 +140,7 @@ return {
                         "name": "node",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
+                          (v3/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -180,16 +189,22 @@ return {
                                 "name": "user",
                                 "plural": false,
                                 "selections": [
-                                  (v2/*: any*/),
-                                  (v3/*: any*/)
+                                  (v3/*: any*/),
+                                  {
+                                    "alias": null,
+                                    "args": null,
+                                    "kind": "ScalarField",
+                                    "name": "name",
+                                    "storageKey": null
+                                  }
                                 ],
                                 "storageKey": null
                               },
-                              (v2/*: any*/)
+                              (v3/*: any*/)
                             ],
                             "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
                           },
-                          (v4/*: any*/)
+                          (v2/*: any*/)
                         ],
                         "storageKey": null
                       },
@@ -229,11 +244,11 @@ return {
                     "storageKey": null
                   }
                 ],
-                "storageKey": "posts_connection(first:3)"
+                "storageKey": null
               },
               {
                 "alias": null,
-                "args": (v5/*: any*/),
+                "args": (v4/*: any*/),
                 "filters": null,
                 "handle": "connection",
                 "key": "PostListFragment__posts_connection",
@@ -250,16 +265,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "6ca724f85aaeab5626f5ec3b35bf36b2",
+    "cacheID": "0c0b9b8de27af2b82be5e9c33868bbba",
     "id": null,
     "metadata": {},
-    "name": "AppQuery",
+    "name": "PostListPaginationQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: ID!\n) {\n  node(id: $baseId) {\n    __typename\n    ... on users {\n      id\n      name\n      ...PostListFragment\n    }\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment on users {\n  posts_connection(first: 3) {\n    edges {\n      node {\n        id\n        ...PostItemFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostListPaginationQuery(\n  $count: Int = 3\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PostListFragment_1G22uz\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment_1G22uz on users {\n  posts_connection(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...PostItemFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();
 
-node.hash = "597add5a5e8c8e68db27686a2092feea";
+node.hash = "62160fcb3a98e1de2534bfcceaa6c713";
 
 module.exports = node;
