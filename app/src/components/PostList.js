@@ -17,6 +17,9 @@ const PostListFragment = graphql`
           ...PostItemFragment
         }
       }
+      pageInfo {
+        hasNextPage
+      }
     }
   }
 `;

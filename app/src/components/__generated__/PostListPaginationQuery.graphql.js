@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c90f95d862ad11a31fd9db1926479e1e>>
+ * @generated SignedSource<<3172275273f1fc8955c7a692b9e2c23e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -230,14 +230,14 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "endCursor",
+                        "name": "hasNextPage",
                         "storageKey": null
                       },
                       {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "hasNextPage",
+                        "name": "endCursor",
                         "storageKey": null
                       }
                     ],
@@ -265,16 +265,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0c0b9b8de27af2b82be5e9c33868bbba",
+    "cacheID": "134692c24c4ac6be5e96e17d661ff873",
     "id": null,
     "metadata": {},
     "name": "PostListPaginationQuery",
     "operationKind": "query",
-    "text": "query PostListPaginationQuery(\n  $count: Int = 3\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PostListFragment_1G22uz\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment_1G22uz on users {\n  posts_connection(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...PostItemFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostListPaginationQuery(\n  $count: Int = 3\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...PostListFragment_1G22uz\n    id\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  title\n  ...StarFragment\n  ...LikesFragment\n}\n\nfragment PostListFragment_1G22uz on users {\n  posts_connection(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...PostItemFragment\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n  }\n  id\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
   }
 };
 })();
 
-node.hash = "62160fcb3a98e1de2534bfcceaa6c713";
+node.hash = "93873eee1dcd8b5f7c6f7826aa4ebb91";
 
 module.exports = node;
