@@ -2,7 +2,7 @@ import graphql from "babel-plugin-relay/macro";
 import { useFragment } from "react-relay";
 import PostItem from "./PostItem";
 
-const ListFragment = graphql`
+const PostListFragment = graphql`
   fragment PostListFragment on users {
     posts(order_by: { id: asc }, limit: 100) {
       id
@@ -12,7 +12,7 @@ const ListFragment = graphql`
 `;
 
 function PostList({ user, selectedPostId, setSelectedPostId }) {
-  const data = useFragment(ListFragment, user);
+  const data = useFragment(PostListFragment, user);
 
   return (
     <div className="PostList">
