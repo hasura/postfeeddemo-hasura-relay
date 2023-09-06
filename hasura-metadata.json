@@ -459,12 +459,13 @@
     {
       "dataType": "users",
       "kind": "model",
-      "name": "users"
+      "name": "users",
+      "globalIDSource": true
     },
     {
       "fields": [
         {
-          "name": "id",
+          "name": "tid",
           "type": "Int"
         },
         {
@@ -473,7 +474,8 @@
         }
       ],
       "kind": "objectType",
-      "name": "users"
+      "name": "users",
+      "globalID": ["tid"]
     },
     {
       "collection": "users",
@@ -483,7 +485,7 @@
       "typeMappings": {
         "users": {
           "fieldMappings": {
-            "id": {
+            "tid": {
               "column": "id"
             },
             "name": {
@@ -508,7 +510,7 @@
       "selectUniques": [
         {
           "queryRootField": "users_pkey",
-          "uniqueIdentifier": ["id"]
+          "uniqueIdentifier": ["tid"]
         }
       ]
     },
@@ -516,7 +518,7 @@
       "kind": "typeOutputPermissions",
       "permissions": {
         "admin": {
-          "fields": ["id", "name"]
+          "fields": ["tid", "name"]
         }
       },
       "typeName": "users"
