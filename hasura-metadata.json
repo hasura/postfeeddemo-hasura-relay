@@ -301,12 +301,13 @@
     {
       "dataType": "labels",
       "kind": "model",
-      "name": "labels"
+      "name": "labels",
+      "globalIDSource": true
     },
     {
       "fields": [
         {
-          "name": "id",
+          "name": "tid",
           "type": "Int"
         },
         {
@@ -319,7 +320,8 @@
         }
       ],
       "kind": "objectType",
-      "name": "labels"
+      "name": "labels",
+      "globalID": ["tid"]
     },
     {
       "collection": "labels",
@@ -329,7 +331,7 @@
       "typeMappings": {
         "labels": {
           "fieldMappings": {
-            "id": {
+            "tid": {
               "column": "id"
             },
             "name": {
@@ -357,7 +359,7 @@
       "selectUniques": [
         {
           "queryRootField": "labels_pkey",
-          "uniqueIdentifier": ["id"]
+          "uniqueIdentifier": ["tid"]
         }
       ]
     },
@@ -365,7 +367,7 @@
       "kind": "typeOutputPermissions",
       "permissions": {
         "admin": {
-          "fields": ["id", "name", "post_id"]
+          "fields": ["tid", "name", "post_id"]
         }
       },
       "typeName": "labels"
@@ -380,7 +382,8 @@
     {
       "dataType": "posts",
       "kind": "model",
-      "name": "posts"
+      "name": "posts",
+      "globalIDSource": true
     },
     {
       "fields": [
@@ -389,7 +392,7 @@
           "type": "String"
         },
         {
-          "name": "id",
+          "name": "tid",
           "type": "Int"
         },
         {
@@ -398,7 +401,8 @@
         }
       ],
       "kind": "objectType",
-      "name": "posts"
+      "name": "posts",
+      "globalID": ["tid"]
     },
     {
       "collection": "posts",
@@ -411,7 +415,7 @@
             "body": {
               "column": "body"
             },
-            "id": {
+            "tid": {
               "column": "id"
             },
             "user_id": {
@@ -436,7 +440,7 @@
       "selectUniques": [
         {
           "queryRootField": "posts_pkey",
-          "uniqueIdentifier": ["id"]
+          "uniqueIdentifier": ["tid"]
         }
       ]
     },
@@ -444,7 +448,7 @@
       "kind": "typeOutputPermissions",
       "permissions": {
         "admin": {
-          "fields": ["body", "id", "user_id"]
+          "fields": ["body", "tid", "user_id"]
         }
       },
       "typeName": "posts"
