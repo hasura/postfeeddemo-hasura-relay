@@ -1,0 +1,644 @@
+{
+  "metadata": [
+    {
+      "allowRoleEmulationFor": "admin",
+      "kind": "authConfig",
+      "webhook": {
+        "mode": "POST",
+        "webhookUrl": "https://auth.pro.hasura.io/webhook/ddn?role=admin"
+      }
+    },
+    {
+      "aggregate_functions": {
+        "Boolean": {
+          "bool_and": {
+            "return_type": "Boolean"
+          },
+          "bool_or": {
+            "return_type": "Boolean"
+          },
+          "every": {
+            "return_type": "Boolean"
+          }
+        },
+        "Float": {
+          "avg": {
+            "return_type": "Float"
+          },
+          "cume_dist": {
+            "return_type": "Float"
+          },
+          "max": {
+            "return_type": "Float"
+          },
+          "min": {
+            "return_type": "Float"
+          },
+          "percent_rank": {
+            "return_type": "Float"
+          },
+          "stddev": {
+            "return_type": "Float"
+          },
+          "stddev_pop": {
+            "return_type": "Float"
+          },
+          "stddev_samp": {
+            "return_type": "Float"
+          },
+          "sum": {
+            "return_type": "Float"
+          },
+          "var_pop": {
+            "return_type": "Float"
+          },
+          "var_samp": {
+            "return_type": "Float"
+          },
+          "variance": {
+            "return_type": "Float"
+          }
+        },
+        "Int": {
+          "bit_and": {
+            "return_type": "Int"
+          },
+          "bit_or": {
+            "return_type": "Int"
+          },
+          "bit_xor": {
+            "return_type": "Int"
+          },
+          "count": {
+            "return_type": "Int"
+          },
+          "dense_rank": {
+            "return_type": "Int"
+          },
+          "max": {
+            "return_type": "Int"
+          },
+          "min": {
+            "return_type": "Int"
+          },
+          "ntile": {
+            "return_type": "Int"
+          },
+          "rank": {
+            "return_type": "Int"
+          },
+          "sum": {
+            "return_type": "Int"
+          }
+        },
+        "String": {
+          "max": {
+            "return_type": "String"
+          },
+          "min": {
+            "return_type": "String"
+          }
+        }
+      },
+      "kind": "postgresDataSource",
+      "metadata": {
+        "native_queries": {},
+        "tables": {
+          "foo": {
+            "columns": {
+              "fooname": {
+                "name": "fooname",
+                "type": "String"
+              }
+            },
+            "foreign_relations": {},
+            "schema_name": "public",
+            "table_name": "foo",
+            "uniqueness_constraints": {}
+          },
+          "labels": {
+            "columns": {
+              "id": {
+                "name": "id",
+                "type": "Int"
+              },
+              "name": {
+                "name": "name",
+                "type": "String"
+              },
+              "post_id": {
+                "name": "post_id",
+                "type": "Int"
+              }
+            },
+            "foreign_relations": {
+              "labels_post_id_fkey": {
+                "column_mapping": {
+                  "post_id": "id"
+                },
+                "foreign_table": "posts"
+              }
+            },
+            "schema_name": "public",
+            "table_name": "labels",
+            "uniqueness_constraints": {
+              "labels_pkey": ["id"]
+            }
+          },
+          "posts": {
+            "columns": {
+              "body": {
+                "name": "body",
+                "type": "String"
+              },
+              "id": {
+                "name": "id",
+                "type": "Int"
+              },
+              "user_id": {
+                "name": "user_id",
+                "type": "Int"
+              }
+            },
+            "foreign_relations": {
+              "posts_user_id_fkey": {
+                "column_mapping": {
+                  "user_id": "id"
+                },
+                "foreign_table": "users"
+              }
+            },
+            "schema_name": "public",
+            "table_name": "posts",
+            "uniqueness_constraints": {
+              "posts_pkey": ["id"]
+            }
+          },
+          "users": {
+            "columns": {
+              "id": {
+                "name": "id",
+                "type": "Int"
+              },
+              "name": {
+                "name": "name",
+                "type": "String"
+              }
+            },
+            "foreign_relations": {},
+            "schema_name": "public",
+            "table_name": "users",
+            "uniqueness_constraints": {
+              "users_pkey": ["id"]
+            }
+          }
+        }
+      },
+      "name": "nedb1",
+      "postgres_database_url": "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/native-boa-74_db",
+      "version": 1
+    },
+    {
+      "dataSource": "nedb1",
+      "kind": "scalarTypeRepresentation",
+      "representation": "String",
+      "scalarType": "any"
+    },
+    {
+      "dataSource": "nedb1",
+      "kind": "scalarTypeRepresentation",
+      "representation": "String",
+      "scalarType": "String"
+    },
+    {
+      "dataSource": "nedb1",
+      "kind": "scalarTypeRepresentation",
+      "representation": "Int",
+      "scalarType": "Int"
+    },
+    {
+      "dataSource": "nedb1",
+      "kind": "scalarTypeRepresentation",
+      "representation": "Boolean",
+      "scalarType": "Boolean"
+    },
+    {
+      "dataSource": "nedb1",
+      "kind": "scalarTypeRepresentation",
+      "representation": "Float",
+      "scalarType": "Float"
+    },
+    {
+      "kind": "newType",
+      "name": "any"
+    },
+    {
+      "graphqlTypeKind": "Scalar",
+      "graphqlTypeName": "any",
+      "kind": "graphqlType",
+      "typeName": "any"
+    },
+    {
+      "dataType": "foo",
+      "kind": "model",
+      "name": "foo"
+    },
+    {
+      "fields": [
+        {
+          "name": "fooname",
+          "type": "String"
+        }
+      ],
+      "kind": "objectType",
+      "name": "foo"
+    },
+    {
+      "collection": "foo",
+      "dataSource": "nedb1",
+      "kind": "modelSource",
+      "modelName": "foo",
+      "typeMappings": {
+        "foo": {
+          "fieldMappings": {
+            "fooname": {
+              "column": "fooname"
+            }
+          }
+        }
+      }
+    },
+    {
+      "graphqlTypeKind": "Object",
+      "graphqlTypeName": "foo",
+      "kind": "graphqlType",
+      "typeName": "foo"
+    },
+    {
+      "kind": "modelGraphqlApi",
+      "modelName": "foo",
+      "selectMany": {
+        "queryRootField": "foo"
+      },
+      "selectUniques": []
+    },
+    {
+      "kind": "typeOutputPermissions",
+      "permissions": {
+        "admin": {
+          "fields": ["fooname"]
+        }
+      },
+      "typeName": "foo"
+    },
+    {
+      "kind": "modelSelectPermissions",
+      "modelName": "foo",
+      "permissions": {
+        "admin": {}
+      }
+    },
+    {
+      "dataType": "labels",
+      "kind": "model",
+      "name": "labels"
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "Int"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "post_id",
+          "type": "Int"
+        }
+      ],
+      "kind": "objectType",
+      "name": "labels"
+    },
+    {
+      "collection": "labels",
+      "dataSource": "nedb1",
+      "kind": "modelSource",
+      "modelName": "labels",
+      "typeMappings": {
+        "labels": {
+          "fieldMappings": {
+            "id": {
+              "column": "id"
+            },
+            "name": {
+              "column": "name"
+            },
+            "post_id": {
+              "column": "post_id"
+            }
+          }
+        }
+      }
+    },
+    {
+      "graphqlTypeKind": "Object",
+      "graphqlTypeName": "labels",
+      "kind": "graphqlType",
+      "typeName": "labels"
+    },
+    {
+      "kind": "modelGraphqlApi",
+      "modelName": "labels",
+      "selectMany": {
+        "queryRootField": "labels"
+      },
+      "selectUniques": [
+        {
+          "queryRootField": "labels_pkey",
+          "uniqueIdentifier": ["id"]
+        }
+      ]
+    },
+    {
+      "kind": "typeOutputPermissions",
+      "permissions": {
+        "admin": {
+          "fields": ["id", "name", "post_id"]
+        }
+      },
+      "typeName": "labels"
+    },
+    {
+      "kind": "modelSelectPermissions",
+      "modelName": "labels",
+      "permissions": {
+        "admin": {}
+      }
+    },
+    {
+      "dataType": "posts",
+      "kind": "model",
+      "name": "posts"
+    },
+    {
+      "fields": [
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "Int"
+        },
+        {
+          "name": "user_id",
+          "type": "Int"
+        }
+      ],
+      "kind": "objectType",
+      "name": "posts"
+    },
+    {
+      "collection": "posts",
+      "dataSource": "nedb1",
+      "kind": "modelSource",
+      "modelName": "posts",
+      "typeMappings": {
+        "posts": {
+          "fieldMappings": {
+            "body": {
+              "column": "body"
+            },
+            "id": {
+              "column": "id"
+            },
+            "user_id": {
+              "column": "user_id"
+            }
+          }
+        }
+      }
+    },
+    {
+      "graphqlTypeKind": "Object",
+      "graphqlTypeName": "posts",
+      "kind": "graphqlType",
+      "typeName": "posts"
+    },
+    {
+      "kind": "modelGraphqlApi",
+      "modelName": "posts",
+      "selectMany": {
+        "queryRootField": "posts"
+      },
+      "selectUniques": [
+        {
+          "queryRootField": "posts_pkey",
+          "uniqueIdentifier": ["id"]
+        }
+      ]
+    },
+    {
+      "kind": "typeOutputPermissions",
+      "permissions": {
+        "admin": {
+          "fields": ["body", "id", "user_id"]
+        }
+      },
+      "typeName": "posts"
+    },
+    {
+      "kind": "modelSelectPermissions",
+      "modelName": "posts",
+      "permissions": {
+        "admin": {}
+      }
+    },
+    {
+      "dataType": "users",
+      "kind": "model",
+      "name": "users"
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "Int"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "kind": "objectType",
+      "name": "users"
+    },
+    {
+      "collection": "users",
+      "dataSource": "nedb1",
+      "kind": "modelSource",
+      "modelName": "users",
+      "typeMappings": {
+        "users": {
+          "fieldMappings": {
+            "id": {
+              "column": "id"
+            },
+            "name": {
+              "column": "name"
+            }
+          }
+        }
+      }
+    },
+    {
+      "graphqlTypeKind": "Object",
+      "graphqlTypeName": "users",
+      "kind": "graphqlType",
+      "typeName": "users"
+    },
+    {
+      "kind": "modelGraphqlApi",
+      "modelName": "users",
+      "selectMany": {
+        "queryRootField": "users"
+      },
+      "selectUniques": [
+        {
+          "queryRootField": "users_pkey",
+          "uniqueIdentifier": ["id"]
+        }
+      ]
+    },
+    {
+      "kind": "typeOutputPermissions",
+      "permissions": {
+        "admin": {
+          "fields": ["id", "name"]
+        }
+      },
+      "typeName": "users"
+    },
+    {
+      "kind": "modelSelectPermissions",
+      "modelName": "users",
+      "permissions": {
+        "admin": {}
+      }
+    },
+    {
+      "kind": "relationship",
+      "mappings": [
+        {
+          "source": {
+            "fieldPath": [
+              {
+                "fieldName": "post_id"
+              }
+            ]
+          },
+          "target": {
+            "modelField": [
+              {
+                "fieldName": "id"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "post",
+      "source": "labels",
+      "target": {
+        "modelName": "posts",
+        "relationshipType": "Object"
+      }
+    },
+    {
+      "kind": "relationship",
+      "mappings": [
+        {
+          "source": {
+            "fieldPath": [
+              {
+                "fieldName": "id"
+              }
+            ]
+          },
+          "target": {
+            "modelField": [
+              {
+                "fieldName": "post_id"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "labels",
+      "source": "posts",
+      "target": {
+        "modelName": "labels",
+        "relationshipType": "Array"
+      }
+    },
+    {
+      "kind": "relationship",
+      "mappings": [
+        {
+          "source": {
+            "fieldPath": [
+              {
+                "fieldName": "user_id"
+              }
+            ]
+          },
+          "target": {
+            "modelField": [
+              {
+                "fieldName": "id"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "user",
+      "source": "posts",
+      "target": {
+        "modelName": "users",
+        "relationshipType": "Object"
+      }
+    },
+    {
+      "kind": "relationship",
+      "mappings": [
+        {
+          "source": {
+            "fieldPath": [
+              {
+                "fieldName": "id"
+              }
+            ]
+          },
+          "target": {
+            "modelField": [
+              {
+                "fieldName": "user_id"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "posts",
+      "source": "users",
+      "target": {
+        "modelName": "posts",
+        "relationshipType": "Array"
+      }
+    }
+  ],
+  "data_connectors": {
+    "postgres": "http://postgres.ndc-agents:4000/deployment/"
+  },
+  "validate_connectors": false
+}
