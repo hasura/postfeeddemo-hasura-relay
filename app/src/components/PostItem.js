@@ -1,14 +1,16 @@
 import graphql from "babel-plugin-relay/macro";
 import { useFragment } from "react-relay";
-import Star from "./Star";
-import Likes from "./Likes";
+import Labels from "./Labels";
 
 const PostItemFragment = graphql`
   fragment PostItemFragment on posts {
     id
-    title
-    ...StarFragment
-    ...LikesFragment
+    body
+    labels {
+      id
+      name
+    }
+    ...LabelsFragment
   }
 `;
 
@@ -19,9 +21,9 @@ function PostItem({ post, setSelectedPostId, isSelected }) {
       className={`PostItem ${isSelected && "selected"}`}
       onClick={() => setSelectedPostId(data.id)}
     >
-      <h4>{data.title}</h4>
-      <Star post={data} />
-      <Likes post={data} />
+      <h4>Post ID: {data.id}</h4>
+      <div>{data.body}</div>
+      <Labels post={data} />
     </div>
   );
 }

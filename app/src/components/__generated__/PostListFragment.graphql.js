@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9e2a0e2470d628028cee10a8a6f2b999>>
+ * @generated SignedSource<<f53fd8005457e0de287be82604ee6a18>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,20 +16,7 @@ var node = {
   "selections": [
     {
       "alias": null,
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "limit",
-          "value": 100
-        },
-        {
-          "kind": "Literal",
-          "name": "order_by",
-          "value": {
-            "id": "asc"
-          }
-        }
-      ],
+      "args": null,
       "concreteType": "posts",
       "kind": "LinkedField",
       "name": "posts",
@@ -48,13 +35,13 @@ var node = {
           "name": "PostItemFragment"
         }
       ],
-      "storageKey": "posts(limit:100,order_by:{\"id\":\"asc\"})"
+      "storageKey": null
     }
   ],
   "type": "users",
   "abstractKey": null
 };
 
-node.hash = "6d9fcc04910be78ee710883388aaf614";
+node.hash = "525042ee63182a641e9f55ebafe58216";
 
 module.exports = node;
