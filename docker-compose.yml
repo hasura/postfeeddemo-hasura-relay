@@ -6,41 +6,8 @@ services:
     volumes:
       - ./app:/app
     environment:
-      HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
-      HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      HASURA_GRAPHQL_ADMIN_SECRET: 2kzOoBVNwNAy2BJqOSlTiUFCiRZboBWpV6Q4RfCTEefDwmE815aeHRkeDhG5Zv6r
+      HASURA_GRAPHQL_GRAPHQL_URL: https://ethical-doberman-9365.ddn.hasura.app/graphql
     ports:
     - "3001:3000"
     # - "9695:9695"
-  database:
-    image: postgres:15
-    # ports:
-    # - "5432:5432"
-    volumes:
-      - database-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: dbuser
-      POSTGRES_PASSWORD: dbpwd
-      POSTGRES_DB: appdb
-  hasura:
-    image: hasura/graphql-engine:v2.27.0
-    ports:
-    - "8080:8080"
-    depends_on:
-    - database
-    environment:
-      ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://dbuser:dbpwd@database:5432/appdb
-      PG_DB_URL: postgres://dbuser:dbpwd@database:5432/appdb
-      ## enable the console served by server
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
-      ## enable debugging mode. It is recommended to disable this in production
-      HASURA_GRAPHQL_DEV_MODE: "true"
-      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-      ## uncomment next line to run console offline (i.e load console assets from server instead of CDN)
-      # HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
-      ## uncomment next line to set an admin secret
-      HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
-    restart: unless-stopped
-
-volumes:
-  database-data:

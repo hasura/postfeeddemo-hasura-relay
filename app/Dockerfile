@@ -7,7 +7,8 @@ RUN apt-get update &&\
     export NVM_DIR=/root/.nvm &&\
     nvm install --default 20
 
-RUN curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
+RUN curl -L https://github.com/hasura/v3-cli/releases/download/v2023.08.10-internal/hasura3_x86_64-unknown-linux-musl -o /usr/local/bin/hasura3 &&\
+    chmod +x /usr/local/bin/hasura3
 
 RUN curl -L https://github.com/facebook/watchman/releases/download/v2023.05.01.00/watchman_ubuntu22.04_v2023.05.01.00.deb -o watchman.deb &&\
     apt-get install -y ./watchman.deb &&\

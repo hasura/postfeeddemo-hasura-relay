@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 // const HTTP_ENDPOINT = "http://localhost:8080/v1beta1/relay";
-const HTTP_ENDPOINT = "http://35.236.112.107:8080/v1beta1/relay";
+const HTTP_ENDPOINT = "https://ethical-doberman-9365.ddn.hasura.app/graphql";
 
 const fetchFn = async (request, variables) => {
   const resp = await fetch(HTTP_ENDPOINT, {
@@ -11,7 +11,8 @@ const fetchFn = async (request, variables) => {
         "application/graphql-response+json; charset=utf-8, application/json; charset=utf-8",
       "Content-Type": "application/json",
       // <-- Additional headers like 'Authorization' would go here
-      "X-Hasura-Admin-Secret": "aFyrZOSGqAj2Eob5lNWz",
+      hasura_cloud_pat:
+        "2kzOoBVNwNAy2BJqOSlTiUFCiRZboBWpV6Q4RfCTEefDwmE815aeHRkeDhG5Zv6r",
     },
     body: JSON.stringify({
       query: request.text, // <-- The GraphQL document composed by Relay
