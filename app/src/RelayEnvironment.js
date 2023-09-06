@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 // const HTTP_ENDPOINT = "http://localhost:8080/v1beta1/relay";
-const HTTP_ENDPOINT = "https://ethical-doberman-9365.ddn.hasura.app/graphql";
+const HTTP_ENDPOINT = "https://flexible-iguana-6068.ddn.hasura.app/graphql";
 
 const fetchFn = async (request, variables) => {
   const resp = await fetch(HTTP_ENDPOINT, {

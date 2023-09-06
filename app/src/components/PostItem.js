@@ -6,10 +6,6 @@ const PostItemFragment = graphql`
   fragment PostItemFragment on posts {
     id
     body
-    labels {
-      id
-      name
-    }
     ...LabelsFragment
   }
 `;
@@ -21,8 +17,8 @@ function PostItem({ post, setSelectedPostId, isSelected }) {
       className={`PostItem ${isSelected && "selected"}`}
       onClick={() => setSelectedPostId(data.id)}
     >
-      <h4>Post ID: {data.id}</h4>
-      <div>{data.body}</div>
+      <h4>{data.body}</h4>
+      <small>ID:{data.id}</small>
       <Labels post={data} />
     </div>
   );

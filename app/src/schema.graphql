@@ -1,35 +1,37 @@
 type foo {
-  _no_fields_accessible: String
+  fooname: String!
 }
 
 input foo_bool_exp {
   _and: [foo_bool_exp!]
   _not: foo_bool_exp
   _or: [foo_bool_exp!]
+  fooname: nedb1_String_comparison_exp
 }
 
-type labels {
-  id: Int!
+type labels implements Node {
+  id: ID!
   name: String!
   post: posts
   post_id: Int!
+  tid: Int!
 }
 
 input labels_bool_exp {
   _and: [labels_bool_exp!]
   _not: labels_bool_exp
   _or: [labels_bool_exp!]
-  id: nedb_Int_comparison_exp
-  name: nedb_String_comparison_exp
-  post_id: nedb_Int_comparison_exp
+  name: nedb1_String_comparison_exp
+  post_id: nedb1_Int_comparison_exp
+  tid: nedb1_Int_comparison_exp
 }
 
-input nedb_Int_comparison_exp {
+input nedb1_Int_comparison_exp {
   _eq: Int
   _is_null: Boolean
 }
 
-input nedb_String_comparison_exp {
+input nedb1_String_comparison_exp {
   _eq: String
   _is_null: Boolean
 }
@@ -38,10 +40,11 @@ interface Node {
   id: ID!
 }
 
-type posts {
+type posts implements Node {
   body: String!
-  id: Int!
+  id: ID!
   labels: [labels!]!
+  tid: Int!
   user: users
   user_id: Int!
 }
@@ -50,33 +53,34 @@ input posts_bool_exp {
   _and: [posts_bool_exp!]
   _not: posts_bool_exp
   _or: [posts_bool_exp!]
-  body: nedb_String_comparison_exp
-  id: nedb_Int_comparison_exp
-  user_id: nedb_Int_comparison_exp
+  body: nedb1_String_comparison_exp
+  tid: nedb1_Int_comparison_exp
+  user_id: nedb1_Int_comparison_exp
 }
 
 type Query {
   foo(limit: Int, offset: Int, where: foo_bool_exp): [foo!]!
   labels(limit: Int, offset: Int, where: labels_bool_exp): [labels!]!
-  labels_pkey(id: Int!): labels
+  labels_pkey(tid: Int!): labels
   node(id: ID!): Node
   posts(limit: Int, offset: Int, where: posts_bool_exp): [posts!]!
-  posts_pkey(id: Int!): posts
+  posts_pkey(tid: Int!): posts
   users(limit: Int, offset: Int, where: users_bool_exp): [users!]!
-  users_pkey(id: Int!): users
+  users_pkey(tid: Int!): users
 }
 
-type users {
-  id: Int!
+type users implements Node {
+  id: ID!
   name: String!
   posts: [posts!]!
+  tid: Int!
 }
 
 input users_bool_exp {
   _and: [users_bool_exp!]
   _not: users_bool_exp
   _or: [users_bool_exp!]
-  id: nedb_Int_comparison_exp
-  name: nedb_String_comparison_exp
+  name: nedb1_String_comparison_exp
+  tid: nedb1_Int_comparison_exp
 }
 

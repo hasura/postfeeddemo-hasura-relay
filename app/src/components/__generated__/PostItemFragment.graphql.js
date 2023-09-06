@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f33fdf8f8ff3e47838d2be734b959255>>
+ * @generated SignedSource<<9c3b49f5ecdd89cf2203e9d71ef81bc5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,45 +8,24 @@
 
 'use strict';
 
-var node = (function(){
-var v0 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
-return {
+var node = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "PostItemFragment",
   "selections": [
-    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "body",
+      "name": "id",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
-      "concreteType": "labels",
-      "kind": "LinkedField",
-      "name": "labels",
-      "plural": true,
-      "selections": [
-        (v0/*: any*/),
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "name",
-          "storageKey": null
-        }
-      ],
+      "kind": "ScalarField",
+      "name": "body",
       "storageKey": null
     },
     {
@@ -58,8 +37,7 @@ return {
   "type": "posts",
   "abstractKey": null
 };
-})();
 
-node.hash = "786ceb052a8dd581a9cd8c7bb01a09e4";
+node.hash = "e5979b74c8e9c0b6035755dbd9c05947";
 
 module.exports = node;

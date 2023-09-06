@@ -1,6 +1,7 @@
 .App {
   display: grid;
-  grid-template: auto 1fr / 1fr 2fr;
+  /* grid-template: auto 1fr / 1fr 2fr; */
+  grid-template: auto 1fr / 1fr;
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
 }
 

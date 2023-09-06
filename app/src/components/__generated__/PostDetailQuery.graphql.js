@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<24fd9d47719ad0d0ff385249763afec1>>
+ * @generated SignedSource<<67907156271e92f68bb5e3bfc04b882d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,65 +34,9 @@ v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "title",
-  "storageKey": null
-},
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "body",
   "storageKey": null
-},
-v5 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "created_at",
-  "storageKey": null
-},
-v6 = {
-  "created_at": "desc"
-},
-v7 = [
-  {
-    "kind": "Literal",
-    "name": "limit",
-    "value": 4
-  },
-  {
-    "kind": "Literal",
-    "name": "order_by",
-    "value": [
-      (v6/*: any*/),
-      {
-        "id": "asc"
-      }
-    ]
-  }
-],
-v8 = [
-  {
-    "alias": null,
-    "args": null,
-    "concreteType": "users",
-    "kind": "LinkedField",
-    "name": "user",
-    "plural": false,
-    "selections": [
-      (v2/*: any*/),
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "name",
-        "storageKey": null
-      }
-    ],
-    "storageKey": null
-  },
-  (v2/*: any*/)
-];
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -113,22 +57,10 @@ return {
             "selections": [
               (v2/*: any*/),
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/),
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "StarFragment"
-              },
-              {
-                "args": null,
-                "kind": "FragmentSpread",
-                "name": "LikesFragment"
-              },
-              {
-                "args": null,
-                "kind": "FragmentSpread",
-                "name": "CommentsFragment"
+                "name": "LabelsFragment"
               }
             ],
             "type": "posts",
@@ -138,7 +70,7 @@ return {
         "storageKey": null
       }
     ],
-    "type": "query_root",
+    "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
@@ -167,58 +99,24 @@ return {
             "kind": "InlineFragment",
             "selections": [
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/),
               {
                 "alias": null,
                 "args": null,
-                "kind": "ScalarField",
-                "name": "starred",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": (v7/*: any*/),
-                "concreteType": "likes",
+                "concreteType": "labels",
                 "kind": "LinkedField",
-                "name": "likes",
-                "plural": true,
-                "selections": (v8/*: any*/),
-                "storageKey": "likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
-              },
-              {
-                "alias": null,
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "limit",
-                    "value": 100
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "order_by",
-                    "value": (v6/*: any*/)
-                  }
-                ],
-                "concreteType": "comments",
-                "kind": "LinkedField",
-                "name": "comments",
+                "name": "labels",
                 "plural": true,
                 "selections": [
                   (v2/*: any*/),
-                  (v4/*: any*/),
                   {
                     "alias": null,
-                    "args": (v7/*: any*/),
-                    "concreteType": "comments_likes",
-                    "kind": "LinkedField",
-                    "name": "comments_likes",
-                    "plural": true,
-                    "selections": (v8/*: any*/),
-                    "storageKey": "comments_likes(limit:4,order_by:[{\"created_at\":\"desc\"},{\"id\":\"asc\"}])"
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "name",
+                    "storageKey": null
                   }
                 ],
-                "storageKey": "comments(limit:100,order_by:{\"created_at\":\"desc\"})"
+                "storageKey": null
               }
             ],
             "type": "posts",
@@ -230,16 +128,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "dd925e3c638517a6a9e6452e0b8a1000",
+    "cacheID": "570f91ab5edf4d20365dcdef1cf346e2",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      title\n      body\n      created_at\n      ...StarFragment\n      ...LikesFragment\n      ...CommentsFragment\n    }\n    id\n  }\n}\n\nfragment CommentLikesFragment on comments {\n  comments_likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment CommentsFragment on posts {\n  comments(order_by: {created_at: desc}, limit: 100) {\n    id\n    body\n    ...CommentLikesFragment\n  }\n}\n\nfragment LikeUserFragment on users {\n  id\n  name\n}\n\nfragment LikesFragment on posts {\n  likes(order_by: [{created_at: desc}, {id: asc}], limit: 4) {\n    user {\n      id\n      ...LikeUserFragment\n    }\n    id\n  }\n}\n\nfragment StarFragment on posts {\n  id\n  starred\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      body\n      ...LabelsFragment\n    }\n    id\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "05e9bd82c5bee58aaa7903e2083b113c";
+node.hash = "377d2b2b4149e00941c3a0360d8d8d66";
 
 module.exports = node;
