@@ -300,9 +300,9 @@
     },
     {
       "dataType": "labels",
+      "globalIDSource": true,
       "kind": "model",
-      "name": "labels",
-      "globalIDSource": true
+      "name": "labels"
     },
     {
       "fields": [
@@ -319,9 +319,9 @@
           "type": "Int"
         }
       ],
+      "globalID": ["tid"],
       "kind": "objectType",
-      "name": "labels",
-      "globalID": ["tid"]
+      "name": "labels"
     },
     {
       "collection": "labels",
@@ -331,14 +331,14 @@
       "typeMappings": {
         "labels": {
           "fieldMappings": {
-            "tid": {
-              "column": "id"
-            },
             "name": {
               "column": "name"
             },
             "post_id": {
               "column": "post_id"
+            },
+            "tid": {
+              "column": "id"
             }
           }
         }
@@ -381,9 +381,9 @@
     },
     {
       "dataType": "posts",
+      "globalIDSource": true,
       "kind": "model",
-      "name": "posts",
-      "globalIDSource": true
+      "name": "posts"
     },
     {
       "fields": [
@@ -400,9 +400,9 @@
           "type": "Int"
         }
       ],
+      "globalID": ["tid"],
       "kind": "objectType",
-      "name": "posts",
-      "globalID": ["tid"]
+      "name": "posts"
     },
     {
       "collection": "posts",
@@ -462,9 +462,9 @@
     },
     {
       "dataType": "users",
+      "globalIDSource": true,
       "kind": "model",
-      "name": "users",
-      "globalIDSource": true
+      "name": "users"
     },
     {
       "fields": [
@@ -477,9 +477,9 @@
           "type": "String"
         }
       ],
+      "globalID": ["tid"],
       "kind": "objectType",
-      "name": "users",
-      "globalID": ["tid"]
+      "name": "users"
     },
     {
       "collection": "users",
@@ -489,11 +489,11 @@
       "typeMappings": {
         "users": {
           "fieldMappings": {
-            "tid": {
-              "column": "id"
-            },
             "name": {
               "column": "name"
+            },
+            "tid": {
+              "column": "id"
             }
           }
         }
@@ -640,6 +640,239 @@
       "target": {
         "modelName": "posts",
         "relationshipType": "Array"
+      }
+    },
+    {
+      "name": "seconddb",
+      "kind": "postgresDataSource",
+      "postgres_database_url": "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/seconddb",
+      "metadata": {
+        "tables": {
+          "tasks": {
+            "schema_name": "public",
+            "table_name": "tasks",
+            "columns": {
+              "id": {
+                "name": "id",
+                "type": "Int"
+              },
+              "title": {
+                "name": "title",
+                "type": "String"
+              },
+              "user_id": {
+                "name": "user_id",
+                "type": "Int"
+              }
+            },
+            "uniqueness_constraints": {
+              "tasks_pkey": ["id"]
+            },
+            "foreign_relations": {}
+          }
+        },
+        "native_queries": {}
+      },
+      "version": 1,
+      "aggregate_functions": {
+        "Boolean": {
+          "bool_and": {
+            "return_type": "Boolean"
+          },
+          "bool_or": {
+            "return_type": "Boolean"
+          },
+          "every": {
+            "return_type": "Boolean"
+          }
+        },
+        "Float": {
+          "avg": {
+            "return_type": "Float"
+          },
+          "cume_dist": {
+            "return_type": "Float"
+          },
+          "max": {
+            "return_type": "Float"
+          },
+          "min": {
+            "return_type": "Float"
+          },
+          "percent_rank": {
+            "return_type": "Float"
+          },
+          "stddev": {
+            "return_type": "Float"
+          },
+          "stddev_pop": {
+            "return_type": "Float"
+          },
+          "stddev_samp": {
+            "return_type": "Float"
+          },
+          "sum": {
+            "return_type": "Float"
+          },
+          "var_pop": {
+            "return_type": "Float"
+          },
+          "var_samp": {
+            "return_type": "Float"
+          },
+          "variance": {
+            "return_type": "Float"
+          }
+        },
+        "Int": {
+          "bit_and": {
+            "return_type": "Int"
+          },
+          "bit_or": {
+            "return_type": "Int"
+          },
+          "bit_xor": {
+            "return_type": "Int"
+          },
+          "count": {
+            "return_type": "Int"
+          },
+          "dense_rank": {
+            "return_type": "Int"
+          },
+          "max": {
+            "return_type": "Int"
+          },
+          "min": {
+            "return_type": "Int"
+          },
+          "ntile": {
+            "return_type": "Int"
+          },
+          "rank": {
+            "return_type": "Int"
+          },
+          "sum": {
+            "return_type": "Int"
+          }
+        },
+        "String": {
+          "max": {
+            "return_type": "String"
+          },
+          "min": {
+            "return_type": "String"
+          }
+        }
+      }
+    },
+    {
+      "kind": "scalarTypeRepresentation",
+      "dataSource": "seconddb",
+      "scalarType": "any",
+      "representation": "String"
+    },
+    {
+      "kind": "scalarTypeRepresentation",
+      "dataSource": "seconddb",
+      "scalarType": "String",
+      "representation": "String"
+    },
+    {
+      "kind": "scalarTypeRepresentation",
+      "dataSource": "seconddb",
+      "scalarType": "Int",
+      "representation": "Int"
+    },
+    {
+      "kind": "scalarTypeRepresentation",
+      "dataSource": "seconddb",
+      "scalarType": "Boolean",
+      "representation": "Boolean"
+    },
+    {
+      "kind": "scalarTypeRepresentation",
+      "dataSource": "seconddb",
+      "scalarType": "Float",
+      "representation": "Float"
+    },
+    {
+      "kind": "model",
+      "name": "tasks",
+      "dataType": "tasks"
+    },
+    {
+      "kind": "objectType",
+      "name": "tasks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "Int"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "user_id",
+          "type": "Int"
+        }
+      ]
+    },
+    {
+      "kind": "modelSource",
+      "modelName": "tasks",
+      "dataSource": "seconddb",
+      "collection": "tasks",
+      "typeMappings": {
+        "tasks": {
+          "fieldMappings": {
+            "id": {
+              "column": "id"
+            },
+            "title": {
+              "column": "title"
+            },
+            "user_id": {
+              "column": "user_id"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "graphqlType",
+      "typeName": "tasks",
+      "graphqlTypeName": "tasks",
+      "graphqlTypeKind": "Object"
+    },
+    {
+      "kind": "modelGraphqlApi",
+      "modelName": "tasks",
+      "selectUniques": [
+        {
+          "queryRootField": "tasks_pkey",
+          "uniqueIdentifier": ["id"]
+        }
+      ],
+      "selectMany": {
+        "queryRootField": "tasks"
+      }
+    },
+    {
+      "kind": "typeOutputPermissions",
+      "typeName": "tasks",
+      "permissions": {
+        "admin": {
+          "fields": ["id", "title", "user_id"]
+        }
+      }
+    },
+    {
+      "kind": "modelSelectPermissions",
+      "modelName": "tasks",
+      "permissions": {
+        "admin": {}
       }
     }
   ],
