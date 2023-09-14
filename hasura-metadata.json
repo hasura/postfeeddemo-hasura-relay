@@ -643,6 +643,33 @@
       }
     },
     {
+      "kind": "relationship",
+      "mappings": [
+        {
+          "source": {
+            "fieldPath": [
+              {
+                "fieldName": "tid"
+              }
+            ]
+          },
+          "target": {
+            "modelField": [
+              {
+                "fieldName": "user_id"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "tasks",
+      "source": "users",
+      "target": {
+        "modelName": "tasks",
+        "relationshipType": "Array"
+      }
+    },
+    {
       "name": "seconddb",
       "kind": "postgresDataSource",
       "postgres_database_url": "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/seconddb",
