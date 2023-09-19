@@ -50,6 +50,9 @@ docker compose exec app bash
 
 ```bash
 # inside the app container
+
+npm install
+
 npm run -- relay
 npm run -- start
 ```
