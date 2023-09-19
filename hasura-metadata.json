@@ -471,9 +471,9 @@
         },
         {
           "kind": "ScalarType",
-          "name": "onedb_integer",
+          "name": "Int",
           "graphql": {
-            "typeName": "onedb_integer"
+            "typeName": "Int"
           },
           "namespace": "default"
         },
@@ -484,7 +484,7 @@
           "graphql": {
             "comparisonExpressionTypeName": "onedb_integer_comparison"
           },
-          "representation": "onedb_integer",
+          "representation": "Int",
           "namespace": "default"
         },
         {
@@ -754,7 +754,7 @@
           "fields": [
             {
               "name": "tid",
-              "type": "onedb_integer"
+              "type": "Int"
             },
             {
               "name": "name",
@@ -762,7 +762,7 @@
             },
             {
               "name": "post_id",
-              "type": "onedb_integer"
+              "type": "Int"
             }
           ],
           "namespace": "default"
@@ -838,11 +838,11 @@
             },
             {
               "name": "tid",
-              "type": "onedb_integer"
+              "type": "Int"
             },
             {
               "name": "user_id",
-              "type": "onedb_integer"
+              "type": "Int"
             }
           ],
           "namespace": "default"
@@ -914,7 +914,7 @@
           "fields": [
             {
               "name": "tid",
-              "type": "onedb_integer"
+              "type": "Int"
             },
             {
               "name": "name",
