@@ -1,86 +1,143 @@
 type foo {
-  fooname: String!
+  fooname: onedb_text!
 }
 
 input foo_bool_exp {
   _and: [foo_bool_exp!]
   _not: foo_bool_exp
   _or: [foo_bool_exp!]
-  fooname: nedb1_String_comparison_exp
+  fooname: onedb_text_comparison
+}
+
+input foo_order_by {
+  fooname: order_by
 }
 
 type labels implements Node {
   id: ID!
-  name: String!
+  name: onedb_text!
   post: posts
-  post_id: Int!
-  tid: Int!
+  post_id: onedb_integer!
+  tid: onedb_integer!
 }
 
 input labels_bool_exp {
   _and: [labels_bool_exp!]
   _not: labels_bool_exp
   _or: [labels_bool_exp!]
-  name: nedb1_String_comparison_exp
-  post_id: nedb1_Int_comparison_exp
-  tid: nedb1_Int_comparison_exp
+  name: onedb_text_comparison
+  post_id: onedb_integer_comparison
+  tid: onedb_integer_comparison
 }
 
-input nedb1_Int_comparison_exp {
-  _eq: Int
-  _is_null: Boolean
+input labels_order_by {
+  name: order_by
+  post_id: order_by
+  tid: order_by
 }
 
-input nedb1_String_comparison_exp {
-  _eq: String
-  _is_null: Boolean
+type Mutation {
+  _no_fields_accessible: String
 }
 
 interface Node {
   id: ID!
 }
 
+scalar onedb_integer
+
+input onedb_integer_comparison {
+  _eq: onedb_integer
+  _gt: onedb_integer
+  _gte: onedb_integer
+  _is_null: Boolean
+  _lt: onedb_integer
+  _lte: onedb_integer
+  _neq: onedb_integer
+}
+
+scalar onedb_text
+
+input onedb_text_comparison {
+  _eq: onedb_text
+  _gt: onedb_text
+  _gte: onedb_text
+  _ilike: onedb_text
+  _iregex: onedb_text
+  _is_null: Boolean
+  _like: onedb_text
+  _lt: onedb_text
+  _lte: onedb_text
+  _neq: onedb_text
+  _nilike: onedb_text
+  _niregex: onedb_text
+  _nlike: onedb_text
+  _nregex: onedb_text
+  _nsimilar: onedb_text
+  _regex: onedb_text
+  _similar: onedb_text
+}
+
+enum order_by {
+  """Sorts the data in ascending order"""
+  Asc
+
+  """Sorts the data in descending order"""
+  Desc
+}
+
 type posts implements Node {
-  body: String!
+  body: onedb_text!
   id: ID!
   labels: [labels!]!
-  tid: Int!
+  tid: onedb_integer!
   user: users
-  user_id: Int!
+  user_id: onedb_integer!
 }
 
 input posts_bool_exp {
   _and: [posts_bool_exp!]
   _not: posts_bool_exp
   _or: [posts_bool_exp!]
-  body: nedb1_String_comparison_exp
-  tid: nedb1_Int_comparison_exp
-  user_id: nedb1_Int_comparison_exp
+  body: onedb_text_comparison
+  tid: onedb_integer_comparison
+  user_id: onedb_integer_comparison
+}
+
+input posts_order_by {
+  body: order_by
+  tid: order_by
+  user_id: order_by
 }
 
 type Query {
-  foo(limit: Int, offset: Int, where: foo_bool_exp): [foo!]!
-  labels(limit: Int, offset: Int, where: labels_bool_exp): [labels!]!
-  labels_pkey(tid: Int!): labels
+  LabelById(tid: onedb_integer!): labels
+  PostById(tid: onedb_integer!): posts
+  UserById(tid: onedb_integer!): users
+  foos(limit: Int, offset: Int, order_by: foo_order_by, where: foo_bool_exp): [foo!]!
+  labels(limit: Int, offset: Int, order_by: labels_order_by, where: labels_bool_exp): [labels!]!
   node(id: ID!): Node
-  posts(limit: Int, offset: Int, where: posts_bool_exp): [posts!]!
-  posts_pkey(tid: Int!): posts
-  users(limit: Int, offset: Int, where: users_bool_exp): [users!]!
-  users_pkey(tid: Int!): users
+  posts(limit: Int, offset: Int, order_by: posts_order_by, where: posts_bool_exp): [posts!]!
+  users(limit: Int, offset: Int, order_by: users_order_by, where: users_bool_exp): [users!]!
 }
 
 type users implements Node {
   id: ID!
-  name: String!
+  name: onedb_text!
   posts: [posts!]!
-  tid: Int!
+  tid: onedb_integer!
 }
 
 input users_bool_exp {
   _and: [users_bool_exp!]
   _not: users_bool_exp
   _or: [users_bool_exp!]
-  name: nedb1_String_comparison_exp
-  tid: nedb1_Int_comparison_exp
+  name: onedb_text_comparison
+  tid: onedb_integer_comparison
+}
+
+input users_order_by {
+  name: order_by
+  tid: order_by
 }
 
