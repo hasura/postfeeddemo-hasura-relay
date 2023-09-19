@@ -9,8 +9,8 @@ import { Suspense } from "react";
 const BASE_USER_ID = 1;
 
 const AppQuery = graphql`
-  query AppQuery($baseId: Int!) {
-    users_pkey(tid: $baseId) {
+  query AppQuery($baseId: onedb_integer!) {
+    UserById(tid: $baseId) {
       id
       name
       ...PostListFragment

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<25787a7d6a0f4a3d0efc7610f5ddc967>>
+ * @generated SignedSource<<8feead133eda5622cbe3fde6ac9806a4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -49,7 +49,7 @@ return {
         "args": (v1/*: any*/),
         "concreteType": "users",
         "kind": "LinkedField",
-        "name": "users_pkey",
+        "name": "UserById",
         "plural": false,
         "selections": [
           (v2/*: any*/),
@@ -77,7 +77,7 @@ return {
         "args": (v1/*: any*/),
         "concreteType": "users",
         "kind": "LinkedField",
-        "name": "users_pkey",
+        "name": "UserById",
         "plural": false,
         "selections": [
           (v2/*: any*/),
@@ -120,16 +120,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c1ba491b4b95fc9959cff99c3fa50816",
+    "cacheID": "80a524faf591abd1ebcfe395d966ac70",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: Int!\n) {\n  users_pkey(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  body\n  ...LabelsFragment\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
+    "text": "query AppQuery(\n  $baseId: onedb_integer!\n) {\n  UserById(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  body\n  ...LabelsFragment\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "b37ec47e0aaf5aa24ef3a94b9c510db7";
+node.hash = "7a45dbeadf07347bcc9cc9383b0a3fab";
 
 module.exports = node;
