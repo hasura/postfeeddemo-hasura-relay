@@ -1,11 +1,13 @@
 import graphql from "babel-plugin-relay/macro";
 import { useFragment } from "react-relay";
+import Labels from "./Labels";
 
 const PostItemFragment = graphql`
   fragment PostItemFragment on posts {
     id
     tid
     body
+    ...LabelsFragment
   }
 `;
 
@@ -18,6 +20,7 @@ function PostItem({ post, setSelectedPostId, isSelected }) {
     >
       <h4>{data.body}</h4>
       <small>DB_ID:{data.tid}</small>
+      <Labels post={data} />
     </div>
   );
 }

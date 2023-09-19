@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f18bf11d6cdbbc2162abb9dba89df25b>>
+ * @generated SignedSource<<0dd9a0f3785332d21ef75baa6d9359fc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -104,6 +104,19 @@ return {
                 "kind": "ScalarField",
                 "name": "body",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "labels",
+                "kind": "LinkedField",
+                "name": "labels",
+                "plural": true,
+                "selections": [
+                  (v2/*: any*/),
+                  (v3/*: any*/)
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -114,12 +127,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4f65cb0648b831e26544faac6dfa842d",
+    "cacheID": "bb1d36313ceb78d83296b9272c318d53",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: Int!\n) {\n  UserById(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  tid\n  body\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
+    "text": "query AppQuery(\n  $baseId: Int!\n) {\n  UserById(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  tid\n  body\n  ...LabelsFragment\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a472f6c70ddce37a2ace0b4039957314>>
+ * @generated SignedSource<<30b269edbb69c96ca5887aa8435723ae>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,12 +34,17 @@ var node = {
       "kind": "ScalarField",
       "name": "body",
       "storageKey": null
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "LabelsFragment"
     }
   ],
   "type": "posts",
   "abstractKey": null
 };
 
-node.hash = "0fd1ac6275decea2ecf82e7c594c597f";
+node.hash = "1ee610f201949da98e328318f1f9f340";
 
 module.exports = node;

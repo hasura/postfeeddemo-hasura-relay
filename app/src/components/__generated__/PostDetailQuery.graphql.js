@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6d8ab00a6ec15c31a878a0d9115ee074>>
+ * @generated SignedSource<<67907156271e92f68bb5e3bfc04b882d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,13 +34,6 @@ v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "tid",
-  "storageKey": null
-},
-v4 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "body",
   "storageKey": null
 };
@@ -64,7 +57,6 @@ return {
             "selections": [
               (v2/*: any*/),
               (v3/*: any*/),
-              (v4/*: any*/),
               {
                 "args": null,
                 "kind": "FragmentSpread",
@@ -107,7 +99,6 @@ return {
             "kind": "InlineFragment",
             "selections": [
               (v3/*: any*/),
-              (v4/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -137,16 +128,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a5994b473f8f7bdeb0fdd04126ae2587",
+    "cacheID": "570f91ab5edf4d20365dcdef1cf346e2",
     "id": null,
     "metadata": {},
     "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      tid\n      body\n      ...LabelsFragment\n    }\n    id\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n"
+    "text": "query PostDetailQuery(\n  $postId: ID!\n) {\n  node(id: $postId) {\n    __typename\n    ... on posts {\n      id\n      body\n      ...LabelsFragment\n    }\n    id\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "72d6f66b391d9a3e7fba3ce075f0cebd";
+node.hash = "377d2b2b4149e00941c3a0360d8d8d66";
 
 module.exports = node;
