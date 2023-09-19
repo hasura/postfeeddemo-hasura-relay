@@ -903,12 +903,13 @@
         {
           "kind": "ObjectType",
           "name": "users",
+          "globalID": ["tid"],
           "graphql": {
             "typeName": "users"
           },
           "fields": [
             {
-              "name": "id",
+              "name": "tid",
               "type": "onedb_integer"
             },
             {
@@ -922,13 +923,14 @@
           "kind": "Model",
           "name": "users",
           "dataType": "users",
+          "globalIDSource": true,
           "source": {
             "dataSource": "onedb",
             "collection": "users",
             "typeMappings": {
               "users": {
                 "fieldMappings": {
-                  "id": {
+                  "tid": {
                     "column": "id"
                   },
                   "name": {
@@ -942,7 +944,7 @@
             "selectUniques": [
               {
                 "queryRootField": "UserById",
-                "uniqueIdentifier": ["id"]
+                "uniqueIdentifier": ["tid"]
               }
             ],
             "selectMany": {
@@ -956,7 +958,7 @@
           "typeName": "users",
           "permissions": {
             "admin": {
-              "fields": ["id", "name"]
+              "fields": ["tid", "name"]
             }
           },
           "namespace": "default"
