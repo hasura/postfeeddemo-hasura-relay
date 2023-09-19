@@ -7,6 +7,7 @@ const PostDetailQuery = graphql`
     node(id: $postId) {
       ... on posts {
         id
+        tid
         body
         ...LabelsFragment
       }
@@ -25,6 +26,7 @@ function PostDetail({ postId }) {
     <div className="PostDetail">
       <h3>{p.body}</h3>
       <p>ID: {p.id}</p>
+      <p>Database ID: {p.tid}</p>
       <Labels post={data.node} />
     </div>
   );

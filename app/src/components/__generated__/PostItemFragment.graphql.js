@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9c3b49f5ecdd89cf2203e9d71ef81bc5>>
+ * @generated SignedSource<<a472f6c70ddce37a2ace0b4039957314>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,19 +25,21 @@ var node = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "body",
+      "name": "tid",
       "storageKey": null
     },
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "LabelsFragment"
+      "kind": "ScalarField",
+      "name": "body",
+      "storageKey": null
     }
   ],
   "type": "posts",
   "abstractKey": null
 };
 
-node.hash = "e5979b74c8e9c0b6035755dbd9c05947";
+node.hash = "0fd1ac6275decea2ecf82e7c594c597f";
 
 module.exports = node;

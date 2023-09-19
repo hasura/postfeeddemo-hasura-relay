@@ -5,8 +5,8 @@ import Labels from "./Labels";
 const PostItemFragment = graphql`
   fragment PostItemFragment on posts {
     id
+    tid
     body
-    ...LabelsFragment
   }
 `;
 
@@ -18,8 +18,7 @@ function PostItem({ post, setSelectedPostId, isSelected }) {
       onClick={() => setSelectedPostId(data.id)}
     >
       <h4>{data.body}</h4>
-      <small>ID:{data.id}</small>
-      <Labels post={data} />
+      <small>DB_ID:{data.tid}</small>
     </div>
   );
 }
