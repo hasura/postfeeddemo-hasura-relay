@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8feead133eda5622cbe3fde6ac9806a4>>
+ * @generated SignedSource<<ff4d12333d1dacb5bce2fb9ceb73fe1a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -120,16 +120,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "80a524faf591abd1ebcfe395d966ac70",
+    "cacheID": "049403224969ba5f2b9f4b90dc219bc6",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $baseId: onedb_integer!\n) {\n  UserById(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  body\n  ...LabelsFragment\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
+    "text": "query AppQuery(\n  $baseId: Int!\n) {\n  UserById(tid: $baseId) {\n    id\n    name\n    ...PostListFragment\n  }\n}\n\nfragment LabelsFragment on posts {\n  labels {\n    id\n    name\n  }\n}\n\nfragment PostItemFragment on posts {\n  id\n  body\n  ...LabelsFragment\n}\n\nfragment PostListFragment on users {\n  posts {\n    id\n    ...PostItemFragment\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "7a45dbeadf07347bcc9cc9383b0a3fab";
+node.hash = "6f00156ca829b63048e8d1d59c8b3ac7";
 
 module.exports = node;

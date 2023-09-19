@@ -9,7 +9,7 @@ import { Suspense } from "react";
 const BASE_USER_ID = 1;
 
 const AppQuery = graphql`
-  query AppQuery($baseId: onedb_integer!) {
+  query AppQuery($baseId: Int!) {
     UserById(tid: $baseId) {
       id
       name
@@ -31,7 +31,7 @@ function App() {
       </h2>
       {/* <div /> */}
       <PostList
-        user={data.users_pkey}
+        user={data.UserById}
         selectedPostId={selectedPostId}
         setSelectedPostId={setSelectedPostId}
       />

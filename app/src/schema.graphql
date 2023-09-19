@@ -17,8 +17,8 @@ type labels implements Node {
   id: ID!
   name: onedb_text!
   post: posts
-  post_id: onedb_integer!
-  tid: onedb_integer!
+  post_id: Int!
+  tid: Int!
 }
 
 input labels_bool_exp {
@@ -44,16 +44,14 @@ interface Node {
   id: ID!
 }
 
-scalar onedb_integer
-
 input onedb_integer_comparison {
-  _eq: onedb_integer
-  _gt: onedb_integer
-  _gte: onedb_integer
+  _eq: Int
+  _gt: Int
+  _gte: Int
   _is_null: Boolean
-  _lt: onedb_integer
-  _lte: onedb_integer
-  _neq: onedb_integer
+  _lt: Int
+  _lte: Int
+  _neq: Int
 }
 
 scalar onedb_text
@@ -90,9 +88,9 @@ type posts implements Node {
   body: onedb_text!
   id: ID!
   labels: [labels!]!
-  tid: onedb_integer!
+  tid: Int!
   user: users
-  user_id: onedb_integer!
+  user_id: Int!
 }
 
 input posts_bool_exp {
@@ -111,9 +109,9 @@ input posts_order_by {
 }
 
 type Query {
-  LabelById(tid: onedb_integer!): labels
-  PostById(tid: onedb_integer!): posts
-  UserById(tid: onedb_integer!): users
+  LabelById(tid: Int!): labels
+  PostById(tid: Int!): posts
+  UserById(tid: Int!): users
   foos(limit: Int, offset: Int, order_by: foo_order_by, where: foo_bool_exp): [foo!]!
   labels(limit: Int, offset: Int, order_by: labels_order_by, where: labels_bool_exp): [labels!]!
   node(id: ID!): Node
@@ -125,7 +123,7 @@ type users implements Node {
   id: ID!
   name: onedb_text!
   posts: [posts!]!
-  tid: onedb_integer!
+  tid: Int!
 }
 
 input users_bool_exp {
