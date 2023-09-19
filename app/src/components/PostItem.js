@@ -1,6 +1,5 @@
 import graphql from "babel-plugin-relay/macro";
 import { useFragment } from "react-relay";
-import Labels from "./Labels";
 
 const PostItemFragment = graphql`
   fragment PostItemFragment on posts {

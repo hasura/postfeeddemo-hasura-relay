@@ -16,7 +16,7 @@ function Labels({ post }) {
     <div className="Labels">
       <small>Labels: </small>
       {data.labels.map((label) => (
-        <small>{label.name}</small>
+        <small key={label.id}>{label.name}</small>
       ))}
     </div>
   );
