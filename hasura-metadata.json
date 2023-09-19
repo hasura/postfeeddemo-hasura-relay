@@ -1,910 +1,1085 @@
 {
-  "metadata": [
+  "namespaces": [
     {
-      "allowRoleEmulationFor": "admin",
-      "kind": "authConfig",
-      "webhook": {
-        "mode": "POST",
-        "webhookUrl": "https://auth.pro.hasura.io/webhook/ddn?role=admin"
-      }
-    },
-    {
-      "aggregate_functions": {
-        "Boolean": {
-          "bool_and": {
-            "return_type": "Boolean"
+      "name": "default",
+      "objects": [
+        {
+          "allowRoleEmulationFor": "admin",
+          "kind": "AuthConfig",
+          "webhook": {
+            "mode": "POST",
+            "webhookUrl": "https://auth.pro.hasura.io/webhook/ddn?role=admin"
           },
-          "bool_or": {
-            "return_type": "Boolean"
-          },
-          "every": {
-            "return_type": "Boolean"
-          }
+          "namespace": "default"
         },
-        "Float": {
-          "avg": {
-            "return_type": "Float"
-          },
-          "cume_dist": {
-            "return_type": "Float"
-          },
-          "max": {
-            "return_type": "Float"
-          },
-          "min": {
-            "return_type": "Float"
-          },
-          "percent_rank": {
-            "return_type": "Float"
-          },
-          "stddev": {
-            "return_type": "Float"
-          },
-          "stddev_pop": {
-            "return_type": "Float"
-          },
-          "stddev_samp": {
-            "return_type": "Float"
-          },
-          "sum": {
-            "return_type": "Float"
-          },
-          "var_pop": {
-            "return_type": "Float"
-          },
-          "var_samp": {
-            "return_type": "Float"
-          },
-          "variance": {
-            "return_type": "Float"
-          }
-        },
-        "Int": {
-          "bit_and": {
-            "return_type": "Int"
-          },
-          "bit_or": {
-            "return_type": "Int"
-          },
-          "bit_xor": {
-            "return_type": "Int"
-          },
-          "count": {
-            "return_type": "Int"
-          },
-          "dense_rank": {
-            "return_type": "Int"
-          },
-          "max": {
-            "return_type": "Int"
-          },
-          "min": {
-            "return_type": "Int"
-          },
-          "ntile": {
-            "return_type": "Int"
-          },
-          "rank": {
-            "return_type": "Int"
-          },
-          "sum": {
-            "return_type": "Int"
-          }
-        },
-        "String": {
-          "max": {
-            "return_type": "String"
-          },
-          "min": {
-            "return_type": "String"
-          }
-        }
-      },
-      "kind": "postgresDataSource",
-      "metadata": {
-        "native_queries": {},
-        "tables": {
-          "foo": {
-            "columns": {
-              "fooname": {
-                "name": "fooname",
-                "type": "String"
-              }
-            },
-            "foreign_relations": {},
-            "schema_name": "public",
-            "table_name": "foo",
-            "uniqueness_constraints": {}
-          },
-          "labels": {
-            "columns": {
-              "id": {
-                "name": "id",
-                "type": "Int"
-              },
-              "name": {
-                "name": "name",
-                "type": "String"
-              },
-              "post_id": {
-                "name": "post_id",
-                "type": "Int"
-              }
-            },
-            "foreign_relations": {
-              "labels_post_id_fkey": {
-                "column_mapping": {
-                  "post_id": "id"
+        {
+          "name": "onedb",
+          "kind": "HasuraHubDataSource",
+          "connectorId": "hasura/postgres",
+          "connectorConfiguration": {
+            "connection_uris": [
+              "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/native-boa-74_db"
+            ],
+            "metadata": {
+              "tables": {
+                "foo": {
+                  "schema_name": "public",
+                  "table_name": "foo",
+                  "columns": {
+                    "fooname": {
+                      "name": "fooname",
+                      "type": "text"
+                    }
+                  },
+                  "uniqueness_constraints": {},
+                  "foreign_relations": {}
                 },
-                "foreign_table": "posts"
-              }
-            },
-            "schema_name": "public",
-            "table_name": "labels",
-            "uniqueness_constraints": {
-              "labels_pkey": ["id"]
-            }
-          },
-          "posts": {
-            "columns": {
-              "body": {
-                "name": "body",
-                "type": "String"
-              },
-              "id": {
-                "name": "id",
-                "type": "Int"
-              },
-              "user_id": {
-                "name": "user_id",
-                "type": "Int"
-              }
-            },
-            "foreign_relations": {
-              "posts_user_id_fkey": {
-                "column_mapping": {
-                  "user_id": "id"
+                "labels": {
+                  "schema_name": "public",
+                  "table_name": "labels",
+                  "columns": {
+                    "id": {
+                      "name": "id",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "name": "name",
+                      "type": "text"
+                    },
+                    "post_id": {
+                      "name": "post_id",
+                      "type": "integer"
+                    }
+                  },
+                  "uniqueness_constraints": {
+                    "labels_pkey": ["id"]
+                  },
+                  "foreign_relations": {
+                    "labels_post_id_fkey": {
+                      "foreign_table": "posts",
+                      "column_mapping": {
+                        "post_id": "id"
+                      }
+                    }
+                  }
                 },
-                "foreign_table": "users"
-              }
-            },
-            "schema_name": "public",
-            "table_name": "posts",
-            "uniqueness_constraints": {
-              "posts_pkey": ["id"]
-            }
-          },
-          "users": {
-            "columns": {
-              "id": {
-                "name": "id",
-                "type": "Int"
+                "posts": {
+                  "schema_name": "public",
+                  "table_name": "posts",
+                  "columns": {
+                    "body": {
+                      "name": "body",
+                      "type": "text"
+                    },
+                    "id": {
+                      "name": "id",
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "name": "user_id",
+                      "type": "integer"
+                    }
+                  },
+                  "uniqueness_constraints": {
+                    "posts_pkey": ["id"]
+                  },
+                  "foreign_relations": {
+                    "posts_user_id_fkey": {
+                      "foreign_table": "users",
+                      "column_mapping": {
+                        "user_id": "id"
+                      }
+                    }
+                  }
+                },
+                "users": {
+                  "schema_name": "public",
+                  "table_name": "users",
+                  "columns": {
+                    "id": {
+                      "name": "id",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "name": "name",
+                      "type": "text"
+                    }
+                  },
+                  "uniqueness_constraints": {
+                    "users_pkey": ["id"]
+                  },
+                  "foreign_relations": {}
+                }
               },
-              "name": {
-                "name": "name",
-                "type": "String"
-              }
+              "native_queries": {}
             },
-            "foreign_relations": {},
-            "schema_name": "public",
-            "table_name": "users",
-            "uniqueness_constraints": {
-              "users_pkey": ["id"]
-            }
-          }
-        }
-      },
-      "name": "nedb1",
-      "postgres_database_url": "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/native-boa-74_db",
-      "version": 1
-    },
-    {
-      "dataSource": "nedb1",
-      "kind": "scalarTypeRepresentation",
-      "representation": "String",
-      "scalarType": "any"
-    },
-    {
-      "dataSource": "nedb1",
-      "kind": "scalarTypeRepresentation",
-      "representation": "String",
-      "scalarType": "String"
-    },
-    {
-      "dataSource": "nedb1",
-      "kind": "scalarTypeRepresentation",
-      "representation": "Int",
-      "scalarType": "Int"
-    },
-    {
-      "dataSource": "nedb1",
-      "kind": "scalarTypeRepresentation",
-      "representation": "Boolean",
-      "scalarType": "Boolean"
-    },
-    {
-      "dataSource": "nedb1",
-      "kind": "scalarTypeRepresentation",
-      "representation": "Float",
-      "scalarType": "Float"
-    },
-    {
-      "kind": "newType",
-      "name": "any"
-    },
-    {
-      "graphqlTypeKind": "Scalar",
-      "graphqlTypeName": "any",
-      "kind": "graphqlType",
-      "typeName": "any"
-    },
-    {
-      "dataType": "foo",
-      "kind": "model",
-      "name": "foo"
-    },
-    {
-      "fields": [
-        {
-          "name": "fooname",
-          "type": "String"
-        }
-      ],
-      "kind": "objectType",
-      "name": "foo"
-    },
-    {
-      "collection": "foo",
-      "dataSource": "nedb1",
-      "kind": "modelSource",
-      "modelName": "foo",
-      "typeMappings": {
-        "foo": {
-          "fieldMappings": {
-            "fooname": {
-              "column": "fooname"
-            }
-          }
-        }
-      }
-    },
-    {
-      "graphqlTypeKind": "Object",
-      "graphqlTypeName": "foo",
-      "kind": "graphqlType",
-      "typeName": "foo"
-    },
-    {
-      "kind": "modelGraphqlApi",
-      "modelName": "foo",
-      "selectMany": {
-        "queryRootField": "foo"
-      },
-      "selectUniques": []
-    },
-    {
-      "kind": "typeOutputPermissions",
-      "permissions": {
-        "admin": {
-          "fields": ["fooname"]
-        }
-      },
-      "typeName": "foo"
-    },
-    {
-      "kind": "modelSelectPermissions",
-      "modelName": "foo",
-      "permissions": {
-        "admin": {}
-      }
-    },
-    {
-      "dataType": "labels",
-      "globalIDSource": true,
-      "kind": "model",
-      "name": "labels"
-    },
-    {
-      "fields": [
-        {
-          "name": "tid",
-          "type": "Int"
-        },
-        {
-          "name": "name",
-          "type": "String"
-        },
-        {
-          "name": "post_id",
-          "type": "Int"
-        }
-      ],
-      "globalID": ["tid"],
-      "kind": "objectType",
-      "name": "labels"
-    },
-    {
-      "collection": "labels",
-      "dataSource": "nedb1",
-      "kind": "modelSource",
-      "modelName": "labels",
-      "typeMappings": {
-        "labels": {
-          "fieldMappings": {
-            "name": {
-              "column": "name"
-            },
-            "post_id": {
-              "column": "post_id"
-            },
-            "tid": {
-              "column": "id"
-            }
-          }
-        }
-      }
-    },
-    {
-      "graphqlTypeKind": "Object",
-      "graphqlTypeName": "labels",
-      "kind": "graphqlType",
-      "typeName": "labels"
-    },
-    {
-      "kind": "modelGraphqlApi",
-      "modelName": "labels",
-      "selectMany": {
-        "queryRootField": "labels"
-      },
-      "selectUniques": [
-        {
-          "queryRootField": "labels_pkey",
-          "uniqueIdentifier": ["tid"]
-        }
-      ]
-    },
-    {
-      "kind": "typeOutputPermissions",
-      "permissions": {
-        "admin": {
-          "fields": ["tid", "name", "post_id"]
-        }
-      },
-      "typeName": "labels"
-    },
-    {
-      "kind": "modelSelectPermissions",
-      "modelName": "labels",
-      "permissions": {
-        "admin": {}
-      }
-    },
-    {
-      "dataType": "posts",
-      "globalIDSource": true,
-      "kind": "model",
-      "name": "posts"
-    },
-    {
-      "fields": [
-        {
-          "name": "body",
-          "type": "String"
-        },
-        {
-          "name": "tid",
-          "type": "Int"
-        },
-        {
-          "name": "user_id",
-          "type": "Int"
-        }
-      ],
-      "globalID": ["tid"],
-      "kind": "objectType",
-      "name": "posts"
-    },
-    {
-      "collection": "posts",
-      "dataSource": "nedb1",
-      "kind": "modelSource",
-      "modelName": "posts",
-      "typeMappings": {
-        "posts": {
-          "fieldMappings": {
-            "body": {
-              "column": "body"
-            },
-            "tid": {
-              "column": "id"
-            },
-            "user_id": {
-              "column": "user_id"
-            }
-          }
-        }
-      }
-    },
-    {
-      "graphqlTypeKind": "Object",
-      "graphqlTypeName": "posts",
-      "kind": "graphqlType",
-      "typeName": "posts"
-    },
-    {
-      "kind": "modelGraphqlApi",
-      "modelName": "posts",
-      "selectMany": {
-        "queryRootField": "posts"
-      },
-      "selectUniques": [
-        {
-          "queryRootField": "posts_pkey",
-          "uniqueIdentifier": ["tid"]
-        }
-      ]
-    },
-    {
-      "kind": "typeOutputPermissions",
-      "permissions": {
-        "admin": {
-          "fields": ["body", "tid", "user_id"]
-        }
-      },
-      "typeName": "posts"
-    },
-    {
-      "kind": "modelSelectPermissions",
-      "modelName": "posts",
-      "permissions": {
-        "admin": {}
-      }
-    },
-    {
-      "dataType": "users",
-      "globalIDSource": true,
-      "kind": "model",
-      "name": "users"
-    },
-    {
-      "fields": [
-        {
-          "name": "tid",
-          "type": "Int"
-        },
-        {
-          "name": "name",
-          "type": "String"
-        }
-      ],
-      "globalID": ["tid"],
-      "kind": "objectType",
-      "name": "users"
-    },
-    {
-      "collection": "users",
-      "dataSource": "nedb1",
-      "kind": "modelSource",
-      "modelName": "users",
-      "typeMappings": {
-        "users": {
-          "fieldMappings": {
-            "name": {
-              "column": "name"
-            },
-            "tid": {
-              "column": "id"
-            }
-          }
-        }
-      }
-    },
-    {
-      "graphqlTypeKind": "Object",
-      "graphqlTypeName": "users",
-      "kind": "graphqlType",
-      "typeName": "users"
-    },
-    {
-      "kind": "modelGraphqlApi",
-      "modelName": "users",
-      "selectMany": {
-        "queryRootField": "users"
-      },
-      "selectUniques": [
-        {
-          "queryRootField": "users_pkey",
-          "uniqueIdentifier": ["tid"]
-        }
-      ]
-    },
-    {
-      "kind": "typeOutputPermissions",
-      "permissions": {
-        "admin": {
-          "fields": ["tid", "name"]
-        }
-      },
-      "typeName": "users"
-    },
-    {
-      "kind": "modelSelectPermissions",
-      "modelName": "users",
-      "permissions": {
-        "admin": {}
-      }
-    },
-    {
-      "kind": "relationship",
-      "mappings": [
-        {
-          "source": {
-            "fieldPath": [
-              {
-                "fieldName": "post_id"
-              }
-            ]
-          },
-          "target": {
-            "modelField": [
-              {
-                "fieldName": "id"
-              }
-            ]
-          }
-        }
-      ],
-      "name": "post",
-      "source": "labels",
-      "target": {
-        "modelName": "posts",
-        "relationshipType": "Object"
-      }
-    },
-    {
-      "kind": "relationship",
-      "mappings": [
-        {
-          "source": {
-            "fieldPath": [
-              {
-                "fieldName": "tid"
-              }
-            ]
-          },
-          "target": {
-            "modelField": [
-              {
-                "fieldName": "post_id"
-              }
-            ]
-          }
-        }
-      ],
-      "name": "labels",
-      "source": "posts",
-      "target": {
-        "modelName": "labels",
-        "relationshipType": "Array"
-      }
-    },
-    {
-      "kind": "relationship",
-      "mappings": [
-        {
-          "source": {
-            "fieldPath": [
-              {
-                "fieldName": "user_id"
-              }
-            ]
-          },
-          "target": {
-            "modelField": [
-              {
-                "fieldName": "id"
-              }
-            ]
-          }
-        }
-      ],
-      "name": "user",
-      "source": "posts",
-      "target": {
-        "modelName": "users",
-        "relationshipType": "Object"
-      }
-    },
-    {
-      "kind": "relationship",
-      "mappings": [
-        {
-          "source": {
-            "fieldPath": [
-              {
-                "fieldName": "tid"
-              }
-            ]
-          },
-          "target": {
-            "modelField": [
-              {
-                "fieldName": "user_id"
-              }
-            ]
-          }
-        }
-      ],
-      "name": "posts",
-      "source": "users",
-      "target": {
-        "modelName": "posts",
-        "relationshipType": "Array"
-      }
-    },
-    {
-      "kind": "relationship",
-      "mappings": [
-        {
-          "source": {
-            "fieldPath": [
-              {
-                "fieldName": "tid"
-              }
-            ]
-          },
-          "target": {
-            "modelField": [
-              {
-                "fieldName": "user_id"
-              }
-            ]
-          }
-        }
-      ],
-      "name": "tasks",
-      "source": "users",
-      "target": {
-        "modelName": "tasks",
-        "relationshipType": "Array"
-      }
-    },
-    {
-      "name": "seconddb",
-      "kind": "postgresDataSource",
-      "postgres_database_url": "postgres://akshaya.acharya:I9icJb3qEjgl@ep-old-leaf-792655.us-west-2.aws.neon.tech/seconddb",
-      "metadata": {
-        "tables": {
-          "tasks": {
-            "schema_name": "public",
-            "table_name": "tasks",
-            "columns": {
-              "id": {
-                "name": "id",
-                "type": "Int"
+            "version": 1,
+            "aggregate_functions": {
+              "boolean": {
+                "bool_and": {
+                  "return_type": "boolean"
+                },
+                "bool_or": {
+                  "return_type": "boolean"
+                },
+                "every": {
+                  "return_type": "boolean"
+                }
               },
-              "title": {
-                "name": "title",
-                "type": "String"
+              "smallint": {
+                "bit_and": {
+                  "return_type": "smallint"
+                },
+                "bit_or": {
+                  "return_type": "smallint"
+                },
+                "bit_xor": {
+                  "return_type": "smallint"
+                },
+                "max": {
+                  "return_type": "smallint"
+                },
+                "min": {
+                  "return_type": "smallint"
+                }
               },
-              "user_id": {
-                "name": "user_id",
-                "type": "Int"
+              "integer": {
+                "bit_and": {
+                  "return_type": "integer"
+                },
+                "bit_or": {
+                  "return_type": "integer"
+                },
+                "bit_xor": {
+                  "return_type": "integer"
+                },
+                "max": {
+                  "return_type": "integer"
+                },
+                "min": {
+                  "return_type": "integer"
+                },
+                "ntile": {
+                  "return_type": "integer"
+                }
+              },
+              "bigint": {
+                "bit_and": {
+                  "return_type": "bigint"
+                },
+                "bit_or": {
+                  "return_type": "bigint"
+                },
+                "bit_xor": {
+                  "return_type": "bigint"
+                },
+                "count": {
+                  "return_type": "bigint"
+                },
+                "dense_rank": {
+                  "return_type": "bigint"
+                },
+                "max": {
+                  "return_type": "bigint"
+                },
+                "min": {
+                  "return_type": "bigint"
+                },
+                "rank": {
+                  "return_type": "bigint"
+                },
+                "sum": {
+                  "return_type": "bigint"
+                }
+              },
+              "real": {
+                "max": {
+                  "return_type": "real"
+                },
+                "min": {
+                  "return_type": "real"
+                },
+                "sum": {
+                  "return_type": "real"
+                }
+              },
+              "double precision": {
+                "avg": {
+                  "return_type": "double precision"
+                },
+                "cume_dist": {
+                  "return_type": "double precision"
+                },
+                "max": {
+                  "return_type": "double precision"
+                },
+                "min": {
+                  "return_type": "double precision"
+                },
+                "percent_rank": {
+                  "return_type": "double precision"
+                },
+                "stddev": {
+                  "return_type": "double precision"
+                },
+                "stddev_pop": {
+                  "return_type": "double precision"
+                },
+                "stddev_samp": {
+                  "return_type": "double precision"
+                },
+                "sum": {
+                  "return_type": "double precision"
+                },
+                "var_pop": {
+                  "return_type": "double precision"
+                },
+                "var_samp": {
+                  "return_type": "double precision"
+                },
+                "variance": {
+                  "return_type": "double precision"
+                }
+              },
+              "numeric": {
+                "avg": {
+                  "return_type": "numeric"
+                },
+                "max": {
+                  "return_type": "numeric"
+                },
+                "min": {
+                  "return_type": "numeric"
+                },
+                "stddev": {
+                  "return_type": "numeric"
+                },
+                "stddev_pop": {
+                  "return_type": "numeric"
+                },
+                "stddev_samp": {
+                  "return_type": "numeric"
+                },
+                "sum": {
+                  "return_type": "numeric"
+                },
+                "var_pop": {
+                  "return_type": "numeric"
+                },
+                "var_samp": {
+                  "return_type": "numeric"
+                },
+                "variance": {
+                  "return_type": "numeric"
+                }
+              },
+              "character": {
+                "max": {
+                  "return_type": "character"
+                },
+                "min": {
+                  "return_type": "character"
+                }
+              },
+              "text": {
+                "max": {
+                  "return_type": "text"
+                },
+                "min": {
+                  "return_type": "text"
+                }
+              },
+              "json": {
+                "json_agg": {
+                  "return_type": "json"
+                }
+              },
+              "jsonb": {
+                "jsonb_agg": {
+                  "return_type": "jsonb"
+                }
+              },
+              "date": {
+                "max": {
+                  "return_type": "date"
+                },
+                "min": {
+                  "return_type": "date"
+                }
+              },
+              "time with time zone": {
+                "max": {
+                  "return_type": "time with time zone"
+                },
+                "min": {
+                  "return_type": "time with time zone"
+                }
+              },
+              "time without time zone": {
+                "max": {
+                  "return_type": "time without time zone"
+                },
+                "min": {
+                  "return_type": "time without time zone"
+                }
+              },
+              "timestamp with time zone": {
+                "max": {
+                  "return_type": "timestamp with time zone"
+                },
+                "min": {
+                  "return_type": "timestamp with time zone"
+                }
+              },
+              "timestamp without time zone": {
+                "max": {
+                  "return_type": "timestamp without time zone"
+                },
+                "min": {
+                  "return_type": "timestamp without time zone"
+                }
               }
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_any",
+          "graphql": {
+            "typeName": "onedb_any"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "any",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_any_comparison"
+          },
+          "representation": "onedb_any",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_bigint",
+          "graphql": {
+            "typeName": "onedb_bigint"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "bigint",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_bigint_comparison"
+          },
+          "representation": "onedb_bigint",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_boolean",
+          "graphql": {
+            "typeName": "onedb_boolean"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "boolean",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_boolean_comparison"
+          },
+          "representation": "onedb_boolean",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_character",
+          "graphql": {
+            "typeName": "onedb_character"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "character",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_character_comparison"
+          },
+          "representation": "onedb_character",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_character_varying",
+          "graphql": {
+            "typeName": "onedb_character_varying"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "character varying",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_character_varying_comparison"
+          },
+          "representation": "onedb_character_varying",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_date",
+          "graphql": {
+            "typeName": "onedb_date"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "date",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_date_comparison"
+          },
+          "representation": "onedb_date",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_double_precision",
+          "graphql": {
+            "typeName": "onedb_double_precision"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "double precision",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_double_precision_comparison"
+          },
+          "representation": "onedb_double_precision",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_integer",
+          "graphql": {
+            "typeName": "onedb_integer"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "integer",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_integer_comparison"
+          },
+          "representation": "onedb_integer",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_json",
+          "graphql": {
+            "typeName": "onedb_json"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "json",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_json_comparison"
+          },
+          "representation": "onedb_json",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_jsonb",
+          "graphql": {
+            "typeName": "onedb_jsonb"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "jsonb",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_jsonb_comparison"
+          },
+          "representation": "onedb_jsonb",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_numeric",
+          "graphql": {
+            "typeName": "onedb_numeric"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "numeric",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_numeric_comparison"
+          },
+          "representation": "onedb_numeric",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_real",
+          "graphql": {
+            "typeName": "onedb_real"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "real",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_real_comparison"
+          },
+          "representation": "onedb_real",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_smallint",
+          "graphql": {
+            "typeName": "onedb_smallint"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "smallint",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_smallint_comparison"
+          },
+          "representation": "onedb_smallint",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_text",
+          "graphql": {
+            "typeName": "onedb_text"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "text",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_text_comparison"
+          },
+          "representation": "onedb_text",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_time_with_time_zone",
+          "graphql": {
+            "typeName": "onedb_time_with_time_zone"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "time with time zone",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_time_with_time_zone_comparison"
+          },
+          "representation": "onedb_time_with_time_zone",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_time_without_time_zone",
+          "graphql": {
+            "typeName": "onedb_time_without_time_zone"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "time without time zone",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_time_without_time_zone_comparison"
+          },
+          "representation": "onedb_time_without_time_zone",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_timestamp_with_time_zone",
+          "graphql": {
+            "typeName": "onedb_timestamp_with_time_zone"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "timestamp with time zone",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_timestamp_with_time_zone_comparison"
+          },
+          "representation": "onedb_timestamp_with_time_zone",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_timestamp_without_time_zone",
+          "graphql": {
+            "typeName": "onedb_timestamp_without_time_zone"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "timestamp without time zone",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_timestamp_without_time_zone_comparison"
+          },
+          "representation": "onedb_timestamp_without_time_zone",
+          "namespace": "default"
+        },
+        {
+          "kind": "ScalarType",
+          "name": "onedb_uuid",
+          "graphql": {
+            "typeName": "onedb_uuid"
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "DataConnectorScalarRepresentation",
+          "dataSource": "onedb",
+          "scalarType": "uuid",
+          "graphql": {
+            "comparisonExpressionTypeName": "onedb_uuid_comparison"
+          },
+          "representation": "onedb_uuid",
+          "namespace": "default"
+        },
+        {
+          "kind": "ObjectType",
+          "name": "foo",
+          "graphql": {
+            "typeName": "foo"
+          },
+          "fields": [
+            {
+              "name": "fooname",
+              "type": "onedb_text"
+            }
+          ],
+          "namespace": "default"
+        },
+        {
+          "kind": "Model",
+          "name": "foo",
+          "dataType": "foo",
+          "source": {
+            "dataSource": "onedb",
+            "collection": "foo",
+            "typeMappings": {
+              "foo": {
+                "fieldMappings": {
+                  "fooname": {
+                    "column": "fooname"
+                  }
+                }
+              }
+            }
+          },
+          "graphql": {
+            "selectUniques": [],
+            "selectMany": {
+              "queryRootField": "foos"
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "TypeOutputPermissions",
+          "typeName": "foo",
+          "permissions": {
+            "admin": {
+              "fields": ["fooname"]
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ModelSelectPermissions",
+          "modelName": "foo",
+          "permissions": {
+            "admin": {
+              "filter": null
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ObjectType",
+          "name": "labels",
+          "graphql": {
+            "typeName": "labels"
+          },
+          "fields": [
+            {
+              "name": "id",
+              "type": "onedb_integer"
             },
-            "uniqueness_constraints": {
-              "tasks_pkey": ["id"]
+            {
+              "name": "name",
+              "type": "onedb_text"
             },
-            "foreign_relations": {}
-          }
-        },
-        "native_queries": {}
-      },
-      "version": 1,
-      "aggregate_functions": {
-        "Boolean": {
-          "bool_and": {
-            "return_type": "Boolean"
-          },
-          "bool_or": {
-            "return_type": "Boolean"
-          },
-          "every": {
-            "return_type": "Boolean"
-          }
-        },
-        "Float": {
-          "avg": {
-            "return_type": "Float"
-          },
-          "cume_dist": {
-            "return_type": "Float"
-          },
-          "max": {
-            "return_type": "Float"
-          },
-          "min": {
-            "return_type": "Float"
-          },
-          "percent_rank": {
-            "return_type": "Float"
-          },
-          "stddev": {
-            "return_type": "Float"
-          },
-          "stddev_pop": {
-            "return_type": "Float"
-          },
-          "stddev_samp": {
-            "return_type": "Float"
-          },
-          "sum": {
-            "return_type": "Float"
-          },
-          "var_pop": {
-            "return_type": "Float"
-          },
-          "var_samp": {
-            "return_type": "Float"
-          },
-          "variance": {
-            "return_type": "Float"
-          }
-        },
-        "Int": {
-          "bit_and": {
-            "return_type": "Int"
-          },
-          "bit_or": {
-            "return_type": "Int"
-          },
-          "bit_xor": {
-            "return_type": "Int"
-          },
-          "count": {
-            "return_type": "Int"
-          },
-          "dense_rank": {
-            "return_type": "Int"
-          },
-          "max": {
-            "return_type": "Int"
-          },
-          "min": {
-            "return_type": "Int"
-          },
-          "ntile": {
-            "return_type": "Int"
-          },
-          "rank": {
-            "return_type": "Int"
-          },
-          "sum": {
-            "return_type": "Int"
-          }
-        },
-        "String": {
-          "max": {
-            "return_type": "String"
-          },
-          "min": {
-            "return_type": "String"
-          }
-        }
-      }
-    },
-    {
-      "kind": "scalarTypeRepresentation",
-      "dataSource": "seconddb",
-      "scalarType": "any",
-      "representation": "String"
-    },
-    {
-      "kind": "scalarTypeRepresentation",
-      "dataSource": "seconddb",
-      "scalarType": "String",
-      "representation": "String"
-    },
-    {
-      "kind": "scalarTypeRepresentation",
-      "dataSource": "seconddb",
-      "scalarType": "Int",
-      "representation": "Int"
-    },
-    {
-      "kind": "scalarTypeRepresentation",
-      "dataSource": "seconddb",
-      "scalarType": "Boolean",
-      "representation": "Boolean"
-    },
-    {
-      "kind": "scalarTypeRepresentation",
-      "dataSource": "seconddb",
-      "scalarType": "Float",
-      "representation": "Float"
-    },
-    {
-      "kind": "model",
-      "name": "tasks",
-      "dataType": "tasks"
-    },
-    {
-      "kind": "objectType",
-      "name": "tasks",
-      "fields": [
-        {
-          "name": "id",
-          "type": "Int"
+            {
+              "name": "post_id",
+              "type": "onedb_integer"
+            }
+          ],
+          "namespace": "default"
         },
         {
-          "name": "title",
-          "type": "String"
+          "kind": "Model",
+          "name": "labels",
+          "dataType": "labels",
+          "source": {
+            "dataSource": "onedb",
+            "collection": "labels",
+            "typeMappings": {
+              "labels": {
+                "fieldMappings": {
+                  "id": {
+                    "column": "id"
+                  },
+                  "name": {
+                    "column": "name"
+                  },
+                  "post_id": {
+                    "column": "post_id"
+                  }
+                }
+              }
+            }
+          },
+          "graphql": {
+            "selectUniques": [
+              {
+                "queryRootField": "LabelById",
+                "uniqueIdentifier": ["id"]
+              }
+            ],
+            "selectMany": {
+              "queryRootField": "labels"
+            }
+          },
+          "namespace": "default"
         },
         {
-          "name": "user_id",
-          "type": "Int"
+          "kind": "TypeOutputPermissions",
+          "typeName": "labels",
+          "permissions": {
+            "admin": {
+              "fields": ["id", "name", "post_id"]
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ModelSelectPermissions",
+          "modelName": "labels",
+          "permissions": {
+            "admin": {
+              "filter": null
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ObjectType",
+          "name": "posts",
+          "graphql": {
+            "typeName": "posts"
+          },
+          "fields": [
+            {
+              "name": "body",
+              "type": "onedb_text"
+            },
+            {
+              "name": "id",
+              "type": "onedb_integer"
+            },
+            {
+              "name": "user_id",
+              "type": "onedb_integer"
+            }
+          ],
+          "namespace": "default"
+        },
+        {
+          "kind": "Model",
+          "name": "posts",
+          "dataType": "posts",
+          "source": {
+            "dataSource": "onedb",
+            "collection": "posts",
+            "typeMappings": {
+              "posts": {
+                "fieldMappings": {
+                  "body": {
+                    "column": "body"
+                  },
+                  "id": {
+                    "column": "id"
+                  },
+                  "user_id": {
+                    "column": "user_id"
+                  }
+                }
+              }
+            }
+          },
+          "graphql": {
+            "selectUniques": [
+              {
+                "queryRootField": "PostById",
+                "uniqueIdentifier": ["id"]
+              }
+            ],
+            "selectMany": {
+              "queryRootField": "posts"
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "TypeOutputPermissions",
+          "typeName": "posts",
+          "permissions": {
+            "admin": {
+              "fields": ["body", "id", "user_id"]
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ModelSelectPermissions",
+          "modelName": "posts",
+          "permissions": {
+            "admin": {
+              "filter": null
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ObjectType",
+          "name": "users",
+          "graphql": {
+            "typeName": "users"
+          },
+          "fields": [
+            {
+              "name": "id",
+              "type": "onedb_integer"
+            },
+            {
+              "name": "name",
+              "type": "onedb_text"
+            }
+          ],
+          "namespace": "default"
+        },
+        {
+          "kind": "Model",
+          "name": "users",
+          "dataType": "users",
+          "source": {
+            "dataSource": "onedb",
+            "collection": "users",
+            "typeMappings": {
+              "users": {
+                "fieldMappings": {
+                  "id": {
+                    "column": "id"
+                  },
+                  "name": {
+                    "column": "name"
+                  }
+                }
+              }
+            }
+          },
+          "graphql": {
+            "selectUniques": [
+              {
+                "queryRootField": "UserById",
+                "uniqueIdentifier": ["id"]
+              }
+            ],
+            "selectMany": {
+              "queryRootField": "users"
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "TypeOutputPermissions",
+          "typeName": "users",
+          "permissions": {
+            "admin": {
+              "fields": ["id", "name"]
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "ModelSelectPermissions",
+          "modelName": "users",
+          "permissions": {
+            "admin": {
+              "filter": null
+            }
+          },
+          "namespace": "default"
+        },
+        {
+          "kind": "Relationship",
+          "name": "post",
+          "mappings": [
+            {
+              "source": {
+                "fieldPath": [
+                  {
+                    "fieldName": "post_id"
+                  }
+                ]
+              },
+              "target": {
+                "modelField": [
+                  {
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "labels",
+          "target": {
+            "modelName": "posts",
+            "relationshipType": "Object"
+          }
+        },
+        {
+          "kind": "Relationship",
+          "name": "labels",
+          "mappings": [
+            {
+              "source": {
+                "fieldPath": [
+                  {
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "target": {
+                "modelField": [
+                  {
+                    "fieldName": "post_id"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "posts",
+          "target": {
+            "modelName": "labels",
+            "relationshipType": "Array"
+          }
+        },
+        {
+          "kind": "Relationship",
+          "name": "user",
+          "mappings": [
+            {
+              "source": {
+                "fieldPath": [
+                  {
+                    "fieldName": "user_id"
+                  }
+                ]
+              },
+              "target": {
+                "modelField": [
+                  {
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "posts",
+          "target": {
+            "modelName": "users",
+            "relationshipType": "Object"
+          }
+        },
+        {
+          "kind": "Relationship",
+          "name": "posts",
+          "mappings": [
+            {
+              "source": {
+                "fieldPath": [
+                  {
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "target": {
+                "modelField": [
+                  {
+                    "fieldName": "user_id"
+                  }
+                ]
+              }
+            }
+          ],
+          "source": "users",
+          "target": {
+            "modelName": "posts",
+            "relationshipType": "Array"
+          }
         }
       ]
-    },
-    {
-      "kind": "modelSource",
-      "modelName": "tasks",
-      "dataSource": "seconddb",
-      "collection": "tasks",
-      "typeMappings": {
-        "tasks": {
-          "fieldMappings": {
-            "id": {
-              "column": "id"
-            },
-            "title": {
-              "column": "title"
-            },
-            "user_id": {
-              "column": "user_id"
-            }
-          }
-        }
-      }
-    },
-    {
-      "kind": "graphqlType",
-      "typeName": "tasks",
-      "graphqlTypeName": "tasks",
-      "graphqlTypeKind": "Object"
-    },
-    {
-      "kind": "modelGraphqlApi",
-      "modelName": "tasks",
-      "selectUniques": [
-        {
-          "queryRootField": "tasks_pkey",
-          "uniqueIdentifier": ["id"]
-        }
-      ],
-      "selectMany": {
-        "queryRootField": "tasks"
-      }
-    },
-    {
-      "kind": "typeOutputPermissions",
-      "typeName": "tasks",
-      "permissions": {
-        "admin": {
-          "fields": ["id", "title", "user_id"]
-        }
-      }
-    },
-    {
-      "kind": "modelSelectPermissions",
-      "modelName": "tasks",
-      "permissions": {
-        "admin": {}
-      }
     }
-  ],
-  "data_connectors": {
-    "postgres": "http://postgres.ndc-agents:4000/deployment/"
-  },
-  "validate_connectors": false
+  ]
 }
