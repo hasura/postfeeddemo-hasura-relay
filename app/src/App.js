@@ -26,20 +26,20 @@ function App() {
   return (
     <div className="App">
       <h2 className="Header">
-        {data.name}
+        {data.UserById.name}
         <span className="AppType">&nbsp;&nbsp;HASURA</span>
       </h2>
-      {/* <div /> */}
+      <div />
       <PostList
         user={data.UserById}
         selectedPostId={selectedPostId}
         setSelectedPostId={setSelectedPostId}
       />
-      {/* TODO <Suspense fallback={<div>Loading... </div>}>
+      <Suspense fallback={<div>Loading... </div>}>
         {" "}
         {(selectedPostId && <PostDetail postId={selectedPostId} />) ||
           "No post selected"}
-      </Suspense> */}
+      </Suspense>
     </div>
   );
 }
